@@ -1,15 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
+import Layout from '@/components/layout'
+
+import Panel from '@/examples/panel'
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
+  mode: 'history',
+  routes: [{
       path: '/',
-      name: 'Hello',
-      component: Hello
+      component: Layout
+    },
+    {
+      path: '/panel',
+      component: Panel,
     }
   ]
 })

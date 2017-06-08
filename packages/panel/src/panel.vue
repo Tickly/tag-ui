@@ -1,0 +1,60 @@
+<template>
+    <div class="panel" :class="panelClass">
+        <div class="panel-heading clearfix">
+            <h3 class="panel-title pull-left" v-text="title"></h3>
+            <div class="panel-tools pull-right">
+                <button type="button" class="btn btn-link btn-xs" aria-label="Left Align" @click="toggleCollapse">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true" v-if="collapsed"></span>
+                    <span class="glyphicon glyphicon-minus" aria-hidden="true" v-else></span>
+                </button>
+            </div>
+        </div>
+        <div class="panel-body">
+            <slot></slot>
+        </div>
+        <div class="panel-footer" v-if="$slots.footer">
+            <slot name="footer"></slot>
+        </div>
+    </div>
+</template>
+<script>
+export default {
+    name: 'TagPanel',
+    data() {
+        return {
+            collapsed: false,
+        }
+    },
+    props: {
+        title: String,
+        type: {
+            type: String,
+            default: 'default',
+        },
+    },
+    computed: {
+        panelClass() {
+            return {
+                ['panel-' + this.type]: true,
+                collapsed: this.collapsed,
+            }
+        }
+    },
+    methods: {
+        toggleCollapse() {
+            this.collapsed = !this.collapsed;
+        }
+    }
+}
+</script>
+<style lang="less">
+.panel {
+    &.collapsed {
+        .panel-body,
+        .panel-footer {
+            display: none;
+        }
+    }
+}
+</style>
+
