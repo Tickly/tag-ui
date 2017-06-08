@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 
 import Panel from '../packages/panel'
+import Button from '../packages/button'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -13,6 +14,7 @@ Vue.config.productionTip = false
 
 const components = [
   Panel,
+  Button,
 ]
 
 components.forEach(component => {

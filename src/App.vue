@@ -6,6 +6,9 @@
           <li>
             <a href="/panel">panel</a>
           </li>
+          <li>
+            <a href="/button">button</a>
+          </li>
         </ul>
       </div>
       <div class="col-sm-9">
