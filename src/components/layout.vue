@@ -1,9 +1,3 @@
 <template>
-    <div>
-        <ul>
-            <li>
-                <a href="/box">box</a>
-            </li>
-        </ul>
-    </div>
+    <h3>hello</h3>
 </template>

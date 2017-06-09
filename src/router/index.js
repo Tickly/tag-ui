@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import Layout from '@/components/layout'
 
 import Panel from '@/examples/panel'
 import Button from '@/examples/button'
+import Table from '@/examples/table'
 
 Vue.use(Router)
 
@@ -21,5 +23,9 @@ export default new Router({
       path: '/button',
       component: Button,
     },
+    {
+      path: '/table',
+      component: Table,
+    }
   ]
 })

@@ -9,6 +9,9 @@
           <li>
             <a href="/button">button</a>
           </li>
+          <li>
+            <a href="/table">table</a>
+          </li>
         </ul>
       </div>
       <div class="col-sm-9">
@@ -20,6 +23,7 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  
 }
 </script>

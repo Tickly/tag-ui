@@ -4,25 +4,19 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-import Panel from '../packages/panel'
-import Button from '../packages/button'
+import components from './components/components'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 Vue.config.productionTip = false
 
-const components = [
-  Panel,
-  Button,
-]
-
-components.forEach(component => {
-  Vue.component(component.name, component);
-})
-
-
-
+for (var key in components) {
+  if (components.hasOwnProperty(key)) {
+    var component = components[key];
+    Vue.component(component.name, component);
+  }
+}
 
 /* eslint-disable no-new */
 new Vue({
