@@ -1,8 +1,8 @@
 <template>
     <table class="table" :class="tableClass">
         <!--<colgroup>
-            <col v-for="col in _columns">
-        </colgroup>-->
+                    <col v-for="col in _columns">
+                </colgroup>-->
         <thead v-if="columns.length">
             <tr>
                 <th v-for="col in _columns" :class="_headerCellClass(col)" v-text="col.label"></th>
@@ -101,6 +101,11 @@ export default {
             if (col.type === 'serial') {
                 return rowIndex + 1
             }
+
+            if (col.type === 'formula') {
+                return col.value(row);
+            }
+
             return row[col.attribute]
         },
         // 显示统计行内容

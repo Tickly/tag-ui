@@ -51,6 +51,13 @@ export default {
                         hAlign: 'center',
                     },
                     {
+                        type: 'formula',
+                        label: '十年后(公式)',
+                        value: (row) => {
+                            return row.age + 10
+                        }
+                    },
+                    {
                         attribute: 'address',
                         label: '地址',
                     }
