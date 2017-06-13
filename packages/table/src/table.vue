@@ -1,8 +1,8 @@
 <template>
     <table class="table" :class="tableClass">
-        <!--<colgroup>
-                    <col v-for="col in _columns">
-                </colgroup>-->
+        <colgroup>
+            <col v-for="col in _columns" :width="_colWidth(col)">
+        </colgroup>
         <thead v-if="columns.length">
             <tr>
                 <th v-for="col in _columns" :class="_headerCellClass(col)" v-text="col.label"></th>
@@ -31,14 +31,25 @@ function parseString(str) {
     }
 }
 function parseObject(object) {
-    if (object.type === 'serial') {
-        object.label = '#';
+    var obj = Object.assign({}, object);
+
+
+    if (obj.type === 'serial') {
+        Object.assign(obj, serial)
     }
-    if (!object.label) {
-        object.label = object.attribute;
+    if (!obj.label) {
+        obj.label = obj.attribute;
     }
 
-    return object;
+    return obj;
+}
+
+
+
+const serial = {
+    label: '#',
+    width: 50,
+    hAlign: 'center',
 }
 
 
@@ -101,9 +112,12 @@ export default {
             if (col.type === 'serial') {
                 return rowIndex + 1
             }
-
             if (col.type === 'formula') {
                 return col.value(row);
+            }
+            if (col.type === 'action') {
+                console.log(this.$slots[col.template]);
+                return this.$slots[col.template];
             }
 
             return row[col.attribute]
@@ -144,9 +158,17 @@ export default {
             if (col.hAlign) {
                 obj['text-' + col.hAlign] = true;
             }
-
             return obj;
+        },
+        _colWidth(col) {
+            if (col.width) return col.width;
+            return 0;
         }
     }
 }
 </script>
+<style lang="less">
+.table {
+    border: 1px solid #ddd;
+}
+</style>
