@@ -15,7 +15,11 @@
         <section>
             <h3>带操作的列</h3>
             <div>
-                <tag-table :options="options2"></tag-table>
+                <tag-table :options="options2">
+                    <template slot="col-action">
+                        <button>删除</button>
+                    </template>
+                </tag-table>
             </div>
         </section>
     </div>
@@ -105,7 +109,7 @@ export default {
                     'address',
                     {
                         type: 'action',
-                        // template: ,
+                        template: 'col-action',
                     },
                 ]
             }

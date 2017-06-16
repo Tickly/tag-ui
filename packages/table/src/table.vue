@@ -13,6 +13,7 @@
                 <td v-for="col in _columns" :class="_cellClass(col)" v-text="_showCellContent(row,col,rowIndex)"></td>
             </tr>
         </tbody>
+        <table-body></table-body>
         <tfoot v-if="showSummary">
             <tr>
                 <th v-for="col in _columns" :class="_summaryCellClass(col)" v-text="_showSummaryContent(col)"></th>
@@ -21,6 +22,9 @@
     </table>
 </template>
 <script>
+// import Vue from 'vue'
+import TableBody from './table-body'
+
 
 function parseString(str) {
     var [attribute, label] = str.split(':');
@@ -35,7 +39,9 @@ function parseObject(object) {
 
 
     if (obj.type === 'serial') {
-        Object.assign(obj, serial)
+        Object.assign(obj, serial);
+    } else if (obj.type === 'action') {
+        Object.assign(obj, action);
     }
     if (!obj.label) {
         obj.label = obj.attribute;
@@ -50,6 +56,9 @@ const serial = {
     label: '#',
     width: 50,
     hAlign: 'center',
+}
+const action = {
+    label: '操作',
 }
 
 
@@ -106,6 +115,10 @@ export default {
             return obj;
         },
     },
+    render(createElement) {
+        console.log('render');
+        return createElement('div', []);
+    },
     methods: {
         // 显示单元格内容
         _showCellContent(row, col, rowIndex) {
@@ -116,8 +129,10 @@ export default {
                 return col.value(row);
             }
             if (col.type === 'action') {
-                console.log(this.$slots[col.template]);
-                return this.$slots[col.template];
+                // console.log(this.$slots[col.template]);
+                // this.$crea
+                // console.log(this.$createElement('div', this.$slots[col.template]))
+                return;
             }
 
             return row[col.attribute]
@@ -164,6 +179,9 @@ export default {
             if (col.width) return col.width;
             return 0;
         }
+    },
+    components:{
+        TableBody,
     }
 }
 </script>
