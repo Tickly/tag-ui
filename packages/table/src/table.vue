@@ -8,12 +8,12 @@
                 <th v-for="col in _columns" :class="_headerCellClass(col)" v-text="col.label"></th>
             </tr>
         </thead>
-        <tbody v-if="data.length && columns.length">
-            <tr v-for="(row,rowIndex) in data">
-                <td v-for="col in _columns" :class="_cellClass(col)" v-text="_showCellContent(row,col,rowIndex)"></td>
-            </tr>
-        </tbody>
-        <table-body></table-body>
+        <!--<tbody v-if="data.length && columns.length">
+                                                    <tr v-for="(row,rowIndex) in data">
+                                                        <td v-for="col in _columns" :class="_cellClass(col)" v-text="_showCellContent(row,col,rowIndex)"></td>
+                                                    </tr>
+                                                </tbody>-->
+        <table-body :data="data" :columns="_columns"></table-body>
         <tfoot v-if="showSummary">
             <tr>
                 <th v-for="col in _columns" :class="_summaryCellClass(col)" v-text="_showSummaryContent(col)"></th>
@@ -23,7 +23,54 @@
 </template>
 <script>
 // import Vue from 'vue'
-import TableBody from './table-body'
+import TableBody from './table-body.vue'
+
+
+
+function render(h, { row, rowIndex, col, colIndex, parent }) {
+    if (col.renderBody) {
+        return col.renderBody.apply(col, arguments);
+    }
+    return ''
+}
+
+
+const columns = {
+    // 默认，或者可以叫data
+    default: {
+        renderBody(h, { row, rowIndex, col, colIndex, parent }) {
+            return row[col.attribute]
+        },
+    },
+    // 模板
+    template: {
+        renderBody(h, { row, rowIndex, col, colIndex, parent }) {
+            if (parent.$scopedSlots[col.template])
+                return h('div', parent.$scopedSlots[col.template]({
+                    row, rowIndex,
+                    col, colIndex,
+                }))
+            else
+                return h('div', parent.$slots[col.template])
+        },
+    },
+    // 序列
+    serial: {
+        label: '#',
+        width: 50,
+        hAlign: 'center',
+        renderBody(h, { row, rowIndex, col, colIndex, parent }) {
+            return rowIndex + 1
+        }
+    },
+    // 公式
+    formula: {
+        renderBody(h, { row, rowIndex, col, colIndex, parent }) {
+            return col.value({ row })
+        },
+    }
+}
+
 
 
 function parseString(str) {
@@ -32,33 +79,17 @@ function parseString(str) {
     return {
         label,
         attribute,
+        render,
     }
 }
 function parseObject(object) {
-    var obj = Object.assign({}, object);
+    var obj = Object.assign({}, object, { render });
 
-
-    if (obj.type === 'serial') {
-        Object.assign(obj, serial);
-    } else if (obj.type === 'action') {
-        Object.assign(obj, action);
-    }
     if (!obj.label) {
         obj.label = obj.attribute;
     }
 
     return obj;
-}
-
-
-
-const serial = {
-    label: '#',
-    width: 50,
-    hAlign: 'center',
-}
-const action = {
-    label: '操作',
 }
 
 
@@ -69,6 +100,9 @@ export default {
             type: Object,
             default: {},
         }
+    },
+    created() {
+        // console.log(this)
     },
     computed: {
         data() {
@@ -91,21 +125,27 @@ export default {
 
         _columns() {
             return this.columns.map(col => {
-                var label, attribute;
+                var obj = {};
 
                 switch (typeof col) {
                     case 'string':
-                        return parseString(col);
+                        obj = parseString(col);
+                        break;
                     case 'object':
-                        return parseObject(col);
+                        obj = parseObject(col);
+                        break;
                     default:
                         break;
                 }
 
-                return {
-                    label,
-                    attribute
-                };
+
+                if (columns[obj.type]) {
+                    Object.assign(obj, columns[obj.type]);
+                } else {
+                    Object.assign(obj, columns.default);
+                }
+
+                return obj;
             })
         },
         tableClass() {
@@ -114,10 +154,6 @@ export default {
             if (this.bordered) obj['table-bordered'] = true;
             return obj;
         },
-    },
-    render(createElement) {
-        console.log('render');
-        return createElement('div', []);
     },
     methods: {
         // 显示单元格内容
@@ -180,7 +216,7 @@ export default {
             return 0;
         }
     },
-    components:{
+    components: {
         TableBody,
     }
 }

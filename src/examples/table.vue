@@ -16,8 +16,8 @@
             <h3>带操作的列</h3>
             <div>
                 <tag-table :options="options2">
-                    <template slot="col-action">
-                        <button>删除</button>
+                    <template slot="col-action" scope="scope">
+                        <button class="btn btn-default" @click="click1(scope)">删除</button>
                     </template>
                 </tag-table>
             </div>
@@ -73,7 +73,7 @@ export default {
                     {
                         type: 'formula',
                         label: '十年后(公式)',
-                        value: (row) => {
+                        value: ({ row }) => {
                             return row.age + 10
                         }
                     },
@@ -108,11 +108,16 @@ export default {
                     },
                     'address',
                     {
-                        type: 'action',
+                        type: 'template',
                         template: 'col-action',
                     },
                 ]
             }
+        }
+    },
+    methods: {
+        click1(scope) {
+            console.log(scope);
         }
     }
 }
