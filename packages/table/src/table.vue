@@ -8,11 +8,6 @@
                 <th v-for="col in _columns" :class="_headerCellClass(col)" v-text="col.label"></th>
             </tr>
         </thead>
-        <!--<tbody v-if="data.length && columns.length">
-                                                    <tr v-for="(row,rowIndex) in data">
-                                                        <td v-for="col in _columns" :class="_cellClass(col)" v-text="_showCellContent(row,col,rowIndex)"></td>
-                                                    </tr>
-                                                </tbody>-->
         <table-body :data="data" :columns="_columns"></table-body>
         <tfoot v-if="showSummary">
             <tr>
@@ -38,6 +33,11 @@ function render(h, { row, rowIndex, col, colIndex, parent }) {
 const columns = {
     // 默认，或者可以叫data
     default: {
+        width: null,
+        // 垂直对齐方式 top,middle,bottom
+        vAlign: 'middle',
+        // 水平对齐方式 left,center,right
+        hAlign: 'left',
         renderBody(h, { row, rowIndex, col, colIndex, parent }) {
             return row[col.attribute]
         },

@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div>
         <section>
             <h3>基础表格</h3>
             <div>
@@ -72,7 +72,7 @@ export default {
                     },
                     {
                         type: 'formula',
-                        label: '十年后(公式)',
+                        label: '十年后(公式列)',
                         value: ({ row }) => {
                             return row.age + 10
                         }
@@ -100,6 +100,7 @@ export default {
                 data,
                 bordered: true,
                 columns: [
+                    { type: 'serial' },
                     'name',
                     // 'age',
                     {
@@ -108,6 +109,7 @@ export default {
                     },
                     'address',
                     {
+                        label: '操作',
                         type: 'template',
                         template: 'col-action',
                     },
@@ -116,8 +118,8 @@ export default {
         }
     },
     methods: {
-        click1(scope) {
-            console.log(scope);
+        click1({ row }) {
+            alert(`${row.name}, ${row.age}`)
         }
     }
 }

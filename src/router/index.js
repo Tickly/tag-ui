@@ -3,29 +3,30 @@ import Router from 'vue-router'
 
 import Layout from '@/components/layout'
 
-import Panel from '@/examples/panel'
-import Button from '@/examples/button'
-import Table from '@/examples/table'
+import examples from '../examples'
+
 
 Vue.use(Router)
 
+
+var routes = [{
+  path: '/',
+  component: Layout
+}]
+
+for (var key in examples) {
+  if (examples.hasOwnProperty(key)) {
+    var example = examples[key];
+
+    routes.push({
+      path: '/' + key,
+      component: example,
+    })
+  }
+}
+
+
 export default new Router({
   mode: 'history',
-  routes: [{
-      path: '/',
-      component: Layout
-    },
-    {
-      path: '/panel',
-      component: Panel,
-    },
-    {
-      path: '/button',
-      component: Button,
-    },
-    {
-      path: '/table',
-      component: Table,
-    }
-  ]
+  routes,
 })

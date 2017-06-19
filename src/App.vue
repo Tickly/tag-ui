@@ -1,16 +1,10 @@
 <template>
-  <div id="app">
+  <div id="app" class="container">
     <div class="row">
       <div class="col-sm-3">
         <ul>
-          <li>
-            <a href="/panel">panel</a>
-          </li>
-          <li>
-            <a href="/button">button</a>
-          </li>
-          <li>
-            <a href="/table">table</a>
+          <li v-for="(component,key) in examples">
+            <a :href="'/'+key">{{key}}</a>
           </li>
         </ul>
       </div>
@@ -22,8 +16,13 @@
 </template>
 
 <script>
+import examples from './examples'
 export default {
   name: 'app',
-  
+  data() {
+    return {
+      examples,
+    }
+  }
 }
 </script>
