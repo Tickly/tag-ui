@@ -36,11 +36,14 @@
 export default {
     name: 'TagPagination',
     props: {
+        // 分页组件的大小
         size: String,
+        // 总数据条数
         total: {
             type: Number,
             required: true,
         },
+        // 每一页的数据条数
         pageSize: {
             type: Number,
             default: 10,
@@ -69,11 +72,20 @@ export default {
             var first, last;
 
             do {
+                // console.log(JSON.stringify(pages));
+
+                if (pages.length === 0) break;
+
                 first = pages.shift();
                 last = pages.pop();
 
+
                 pages.unshift(first);
-                pages.push(last);
+                if (last)
+                    pages.push(last);
+                else {
+                    last = first;
+                }
 
                 if (first <= left) {
                     pages.shift();

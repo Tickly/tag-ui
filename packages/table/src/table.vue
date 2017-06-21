@@ -140,9 +140,9 @@ export default {
 
 
                 if (columns[obj.type]) {
-                    Object.assign(obj, columns[obj.type]);
+                    obj = Object.assign({}, columns[obj.type], obj);
                 } else {
-                    Object.assign(obj, columns.default);
+                    obj = Object.assign({}, columns.default, obj);
                 }
 
                 return obj;
@@ -175,13 +175,18 @@ export default {
         },
         // 显示统计行内容
         _showSummaryContent(col) {
-            if (col.type === 'serial') return '统计'
-
+            // if (col.type === 'serial') return '统计'
             if (!col.summary) return
-
-
-            return this.data.reduce((a, b) => {
-                a += b[col.attribute];
+            return this.data.reduce((a, row) => {
+                var v;
+                if (col.value) {
+                    if ('function' === typeof col.value) {
+                        v = col.value({ row });
+                    }
+                } else {
+                    v = row[col.attribute];
+                }
+                a += v;
                 return a;
             }, 0)
         },
@@ -212,6 +217,7 @@ export default {
             return obj;
         },
         _colWidth(col) {
+            // console.log(col.width);
             if (col.width) return col.width;
             return 0;
         }
