@@ -99,8 +99,8 @@ export default {
                         attribute: 'age',
                         label: 'age + 5',
                         hAlign: 'center',
-                        format(h, age) {
-                            return <a>{age + 5}</a>
+                        format(h, { row }) {
+                            return <button class="btn btn-default" onClick={() => { this.click1({ row }) }}>del</button>
                         }
                     },
                     'address',

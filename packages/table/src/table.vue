@@ -34,7 +34,8 @@ function render(h, { row, rowIndex, col, colIndex, parent }) {
                 value = Formatter[col.format](value);
             }
         } else if ('function' === typeof col.format) {
-            value = col.format(h, value);
+            // console.log(this);
+            value = col.format.call(parent.$parent, h, { row });
         }
     }
 
