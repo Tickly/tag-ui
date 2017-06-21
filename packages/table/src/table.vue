@@ -19,14 +19,27 @@
 <script>
 // import Vue from 'vue'
 import TableBody from './table-body.vue'
+import Formatter from './formatter'
 
 
 
 function render(h, { row, rowIndex, col, colIndex, parent }) {
+    var value = '';
     if (col.renderBody) {
-        return col.renderBody.apply(col, arguments);
+        value = col.renderBody.apply(col, arguments);
     }
-    return ''
+    if (col.format) {
+        if ('string' === typeof col.format) {
+            if ('function' === typeof Formatter[col.format]) {
+                value = Formatter[col.format](value);
+            }
+        } else if ('function' === typeof col.format) {
+            value = col.format(h, value);
+        }
+    }
+
+
+    return value
 }
 
 
