@@ -6,13 +6,9 @@ export default {
         this._l(this.data, (row, rowIndex) =>
           <tr>
             {
-              this._l(this.columns, (col, colIndex) =>
-                <td class={this.renderClass(col)}>
-                  {
-                    col.render.call(this._renderProxy, h, { row, rowIndex, col, colIndex, parent: this.$parent })
-                  }
-                </td>
-              )
+              this._l(this.columns, (column, colIndex) => {
+                return column.renderDataCell(h, { row, rowIndex, column })
+              })
             }
           </tr>
         )
@@ -22,9 +18,6 @@ export default {
   props: {
     data: Array,
     columns: Array,
-  },
-  created() {
-    // console.log(this._l);
   },
   methods: {
     renderClass(col) {

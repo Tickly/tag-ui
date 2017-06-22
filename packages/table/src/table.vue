@@ -1,20 +1,17 @@
 <template>
     <table class="table" :class="tableClass">
         <colgroup>
-            <col v-for="col in _columns" :width="_colWidth(col)">
+            <col v-for="(col,i) in _columns" :key="i" :width="_colWidth(col)">
         </colgroup>
-        <!--<thead v-if="columns.length">
-                                                                                                            <tr>
-                                                                                                                <th v-for="col in _columns" :class="_headerCellClass(col)" v-text="col.label"></th>
-                                                                                                            </tr>
-                                                                                                        </thead>-->
-        <table-head :columns="columns_array"></table-head>
-        <table-body :data="data" :columns="_columns"></table-body>
-        <tfoot v-if="showSummary">
-            <tr>
-                <th v-for="col in _columns" :class="_summaryCellClass(col)" v-text="_showSummaryContent(col)"></th>
-            </tr>
-        </tfoot>
+        <thead is="table-head" :columns="columns_array"></thead>
+        <tbody is="table-body" :columns="columns_array" :data="data"></tbody>
+        <!--<table-head :columns="columns_array"></table-head>-->
+        <!--<table-body :data="data" :columns="_columns"></table-body>-->
+        <!--<tfoot v-if="showSummary">
+                    <tr>
+                        <th v-for="(col,i) in _columns" :key="i" :class="_summaryCellClass(col)" v-text="_showSummaryContent(col)"></th>
+                    </tr>
+                </tfoot>-->
     </table>
 </template>
 <script>
@@ -24,11 +21,15 @@ import TableBody from './table-body.vue'
 import Formatter from './formatter'
 import DataColumn from './DataColumn'
 import SerialColumn from './SerialColumn'
+import FormulaColumn from './FormulaColumn'
+import TemplateColumn from './TemplateColumn'
 
 
 const ColumnClasses = {
     data: DataColumn,
     serial: SerialColumn,
+    formula: FormulaColumn,
+    template: TemplateColumn,
 }
 
 

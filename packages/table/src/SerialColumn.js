@@ -6,4 +6,10 @@ export default class SerialColumn extends Column {
 
     this.label = '#';
   }
+
+  renderDataCellContent({
+    rowIndex
+  }) {
+    return rowIndex + 1
+  }
 }

@@ -1,8 +1,5 @@
 export default class Column {
 
-
-
-
   constructor({
     attribute,
     label
@@ -10,14 +7,16 @@ export default class Column {
 
     this.attribute = attribute;
     this.label = label;
+
+    this.vAlign = 'middle';
+    this.hAlign = 'center';
   }
 
   // 渲染一个th
   renderHeaderCell(h, column) {
     return h('th', {
-      attrs: {
-        // idx: 'foo'
-      },
+      attrs: {},
+      class: this.renderHeaderClass(),
       domProps: {
         innerHTML: this.renderHeaderCellContent()
       }
@@ -28,13 +27,38 @@ export default class Column {
   }
 
 
+  renderHeaderClass() {
+    var classes = [];
 
+    classes.push('text-' + this.hAlign);
+    classes.push('vAlign-' + this.vAlign);
 
-  renderDataCell(h) {
-    return h('td')
+    return classes;
   }
-  renderDataCellContent() {
-    return this.content;
+
+
+
+  renderDataCell(h, data) {
+    return h('td', {
+      class: this.renderDataClass(),
+      domProps: {
+        innerHTML: this.renderDataCellContent(data)
+      }
+    })
+  }
+  renderDataCellContent({
+    row,
+    column
+  }) {
+    if (column.attribute)
+      return row[column.attribute]
+    return;
+  }
+  renderDataClass() {
+    var classes = [];
+    classes.push('text-' + this.hAlign);
+    classes.push('vAlign-' + this.vAlign);
+    return classes;
   }
 
 }

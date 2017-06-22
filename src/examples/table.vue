@@ -79,7 +79,7 @@ export default {
                         type: 'formula',
                         label: '十年后(公式列)',
                         summary: true,
-                        value: ({ row }) => {
+                        value: (row) => {
                             return row.age + 10
                         }
                     },
@@ -99,9 +99,9 @@ export default {
                         attribute: 'age',
                         label: 'age + 5',
                         hAlign: 'center',
-                        format(h, { row }) {
-                            return <button class="btn btn-default" onClick={() => { this.click1({ row }) }}>del</button>
-                        }
+                        // format(h, { row }) {
+                        //     return <button class="btn btn-default" onClick={() => { this.click1({ row }) }}>del</button>
+                        // }
                     },
                     'address',
                     {
@@ -134,7 +134,9 @@ export default {
                     {
                         label: '操作',
                         type: 'template',
-                        template: 'col-action',
+                        template(h) {
+                            return <button class="btn btn-default" onClick={() => { this.click1({ row }) }}>del</button>
+                        },
                     },
                 ]
             }

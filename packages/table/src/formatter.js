@@ -3,10 +3,17 @@ import moment from 'moment'
 
 
 const formatter = {
+  format,
+
   currency: asCurrency,
   date: asDate,
   time: asTime,
+  text: asText,
+}
 
+
+function format(value, format) {
+  return this[format](value);
 }
 
 function asDate(value) {
@@ -23,6 +30,10 @@ function asCurrency(value) {
 
 function asPercent(value) {
   return value + '%'
+}
+
+function asText(value) {
+  return value
 }
 
 
