@@ -23,6 +23,9 @@ export default {
     data: Array,
     columns: Array,
   },
+  created() {
+    // console.log(this._l);
+  },
   methods: {
     renderClass(col) {
       var classes = [];
@@ -30,16 +33,9 @@ export default {
       if (col.hAlign) classes.push('text-' + col.hAlign);
       classes.push('vAlign-middle');
 
-
       return classes;
     }
   }
 }
 </script>
-<style lang="less">
-.table {
-  .vAlign-middle {
-    vertical-align: middle;
-  }
-}
-</style>
+

@@ -3,11 +3,12 @@
         <colgroup>
             <col v-for="col in _columns" :width="_colWidth(col)">
         </colgroup>
-        <thead v-if="columns.length">
-            <tr>
-                <th v-for="col in _columns" :class="_headerCellClass(col)" v-text="col.label"></th>
-            </tr>
-        </thead>
+        <!--<thead v-if="columns.length">
+                                                                                                            <tr>
+                                                                                                                <th v-for="col in _columns" :class="_headerCellClass(col)" v-text="col.label"></th>
+                                                                                                            </tr>
+                                                                                                        </thead>-->
+        <table-head :columns="columns_array"></table-head>
         <table-body :data="data" :columns="_columns"></table-body>
         <tfoot v-if="showSummary">
             <tr>
@@ -18,8 +19,18 @@
 </template>
 <script>
 // import Vue from 'vue'
+import TableHead from './table-head.vue'
 import TableBody from './table-body.vue'
 import Formatter from './formatter'
+import DataColumn from './DataColumn'
+import SerialColumn from './SerialColumn'
+
+
+const ColumnClasses = {
+    data: DataColumn,
+    serial: SerialColumn,
+}
+
 
 
 
@@ -97,13 +108,7 @@ function parseString(str) {
     }
 }
 function parseObject(object) {
-    var obj = Object.assign({}, object, { render });
-
-    if (!obj.label) {
-        obj.label = obj.attribute;
-    }
-
-    return obj;
+    return Object.assign({}, object, { render });
 }
 
 
@@ -115,8 +120,14 @@ export default {
             default: {},
         }
     },
+    data() {
+        return {
+            columns_array: [],
+        }
+    },
     created() {
         // console.log(this)
+        this.initColumns();
     },
     computed: {
         data() {
@@ -157,6 +168,10 @@ export default {
                     obj = Object.assign({}, columns[obj.type], obj);
                 } else {
                     obj = Object.assign({}, columns.default, obj);
+                }
+
+                if (!obj.label) {
+                    obj.label = obj.attribute;
                 }
 
                 return obj;
@@ -234,9 +249,39 @@ export default {
             // console.log(col.width);
             if (col.width) return col.width;
             return 0;
+        },
+
+        // 初始化列
+        initColumns() {
+            if (!this.columns) return;
+
+            this.columns_array = this.columns.map(column => {
+                let type = typeof column;
+                if ('string' === type) {
+                    return this.createDataColumn(column)
+                } else if ('object' === type) {
+                    if (column.type) {
+                        if (ColumnClasses[column.type]) {
+                            return new ColumnClasses[column.type](column);
+                        }
+                    }
+                }
+                return new DataColumn(column);
+            })
+
+            // console.log(this.columns_array)
+        },
+        createDataColumn(text) {
+            var [attribute, label] = text.split(':');
+            if (!label) label = attribute;
+            return new DataColumn({
+                attribute,
+                label,
+            })
         }
     },
     components: {
+        TableHead,
         TableBody,
     }
 }
@@ -244,5 +289,8 @@ export default {
 <style lang="less">
 .table {
     border: 1px solid #ddd;
+    .vAlign-middle {
+        vertical-align: middle;
+    }
 }
 </style>
