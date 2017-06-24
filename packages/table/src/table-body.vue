@@ -7,7 +7,7 @@ export default {
           <tr>
             {
               this._l(this.columns, (column, colIndex) => {
-                return column.renderDataCell(h, { row, rowIndex, column })
+                return column.renderDataCell(h, { row, rowIndex, column }, this)
               })
             }
           </tr>
@@ -19,6 +19,7 @@ export default {
     data: Array,
     columns: Array,
   },
+  
   methods: {
     renderClass(col) {
       var classes = [];

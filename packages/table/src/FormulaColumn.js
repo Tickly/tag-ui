@@ -12,12 +12,21 @@ export default class FormulaColumn extends DataColumn {
   }
 
   getDataCellValue(row, col) {
-    if (col.attribute) {
-      return row[col.attribute]
-    }
-    if ('function' === typeof col.value) {
-      return col.value(row);
-    }
-    return null;
+    return col.value(row);
+  }
+
+
+  getFootCellContent() {
+
+  }
+
+  renderFooterCellContent(h, data, column) {
+    console.log(data);
+    return data.reduce((a, b) => {
+      return 0;
+    }, 0);
+
+    // return this.getDataCellValue();
+    // return super.renderFootCellContent(h, data, column);
   }
 }

@@ -31,28 +31,28 @@ export default {
         const data = [
             {
                 date: '2016-05-02 12:08:34',
-                name: '王小虎',
+                name: '令狐冲',
                 address: '上海市普陀区金沙江路 1518 弄',
                 age: 25,
                 money: 1000000,
             },
             {
                 date: '2016-05-04 09:09:09',
-                name: '王小虎',
+                name: '赵云',
                 address: '上海市普陀区金沙江路 1517 弄',
                 age: 31,
                 money: 842934,
             },
             {
                 date: '2016-05-01 00:00:00',
-                name: '王小虎',
+                name: '狙击手',
                 address: '上海市普陀区金沙江路 1519 弄',
                 age: 28,
                 money: 492883,
             },
             {
                 date: '2016-05-03 10:30:00',
-                name: '王小虎',
+                name: '我是警察',
                 address: '上海市普陀区金沙江路 1516 弄',
                 age: 27,
                 money: 10000001,
@@ -115,6 +115,7 @@ export default {
                     },
                     {
                         attribute: 'date',
+                        label: 'time',
                         format: 'time',
                     },
                 ]
@@ -134,8 +135,11 @@ export default {
                     {
                         label: '操作',
                         type: 'template',
-                        template(h) {
-                            return <button class="btn btn-default" onClick={() => { this.click1({ row }) }}>del</button>
+                        template(h, { row }) {
+
+                            return <button class="btn btn-default" onClick={() => {
+                                console.log(this, row);
+                            }}>del</button>
                         },
                     },
                 ]
@@ -146,7 +150,10 @@ export default {
         click1({ row }) {
             alert(`${row.name}, ${row.age}`)
         }
-    }
+    },
+    created() {
+        console.log(this._renderProxy);
+    },
 }
 </script>
 

@@ -4,6 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+// 扩展一些方法
+import './extends'
+
 import components from './components'
 
 import 'bootstrap/dist/css/bootstrap.min.css'

@@ -12,4 +12,6 @@ export default class SerialColumn extends Column {
   }) {
     return rowIndex + 1
   }
+
+
 }

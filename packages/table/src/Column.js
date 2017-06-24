@@ -2,14 +2,19 @@ export default class Column {
 
   constructor({
     attribute,
-    label
+    label,
+    summary = false,
   }) {
 
     this.attribute = attribute;
     this.label = label;
+    this.summary = summary;
 
     this.vAlign = 'middle';
     this.hAlign = 'center';
+
+    // 所有该列的值
+    this.column_values = [];
   }
 
   // 渲染一个th
@@ -50,9 +55,12 @@ export default class Column {
     row,
     column
   }) {
+    return this.getDataCellValue(row, col);
+  }
+  getDataCellValue(row, col) {
     if (column.attribute)
       return row[column.attribute]
-    return;
+    return null;
   }
   renderDataClass() {
     var classes = [];
@@ -60,5 +68,38 @@ export default class Column {
     classes.push('vAlign-' + this.vAlign);
     return classes;
   }
+
+
+
+
+
+  renderFootCell(h, data, column) {
+    return h('td', {
+      class: this.renderDataClass(),
+    }, [this.renderFootCellContent(h, data, column)])
+  }
+  renderFootCellContent(h, data, column) {
+    // console.log('renderFootCellContent', data, column)
+    if (!column.summary) return;
+    // console.log(data);
+    return data.column(column.attribute).sum();
+  }
+  renderFootClass() {
+    var classes = [];
+    classes.push('text-' + this.hAlign);
+    classes.push('vAlign-' + this.vAlign);
+    return classes;
+  }
+
+
+
+
+
+  setPageRows(data) {
+    this.column_values = data.map(row => {
+      this
+    });
+  }
+
 
 }

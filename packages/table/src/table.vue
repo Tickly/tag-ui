@@ -5,19 +5,15 @@
         </colgroup>
         <thead is="table-head" :columns="columns_array"></thead>
         <tbody is="table-body" :columns="columns_array" :data="data"></tbody>
-        <!--<table-head :columns="columns_array"></table-head>-->
-        <!--<table-body :data="data" :columns="_columns"></table-body>-->
-        <!--<tfoot v-if="showSummary">
-                    <tr>
-                        <th v-for="(col,i) in _columns" :key="i" :class="_summaryCellClass(col)" v-text="_showSummaryContent(col)"></th>
-                    </tr>
-                </tfoot>-->
+        <tfoot is="table-foot" v-if="showSummary" :columns="columns_array" :data="data"></tfoot>
     </table>
 </template>
 <script>
 // import Vue from 'vue'
 import TableHead from './table-head.vue'
 import TableBody from './table-body.vue'
+import TableFoot from './table-foot.vue'
+
 import Formatter from './formatter'
 import DataColumn from './DataColumn'
 import SerialColumn from './SerialColumn'
@@ -284,6 +280,7 @@ export default {
     components: {
         TableHead,
         TableBody,
+        TableFoot,
     }
 }
 </script>
