@@ -16,8 +16,15 @@ export default {
                     money: 1000000,
                 },
                 attributes: [
-                    'name',
+                    'name:text:姓名',
                     'age',
+                    'money:currency',
+                    {
+                        attribute: 'address',
+                        value(){
+                            return 1
+                        }
+                    },
                 ],
                 title: '你开心就好',
             }

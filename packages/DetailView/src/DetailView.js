@@ -1,4 +1,6 @@
 import UtilsType from '@/utils/type'
+import Formatter from '@/utils/formatter'
+
 
 export default class DetailView {
   constructor(options) {
@@ -36,28 +38,65 @@ export default class DetailView {
       throw new Error('必须指定 attribute 属性')
     }
 
-    this.attributes = this.attributes.map((attribute, i) => {
-      let newAttribute = {};
+    this.attributes = this.attributes.map((_attribute, i) => {
+      let attribute, format, label, value;
 
-      if (UtilsType.isString(attribute)) {
-        newAttribute.attribute = attribute;
+      if (UtilsType.isString(_attribute)) {
+        [attribute, format, label] = _attribute.split(':');
+      } else if (UtilsType.isObject(_attribute)) {
+        ({
+          attribute,
+          format,
+          label,
+          value,
+        } = _attribute);
+      }
+
+      if (!format) {
+        format = 'text';
+      }
+
+      if (attribute) {
+        if (!label) {
+          label = attribute;
+        }
+
+        if (!value) {
+          value = this.model[attribute];
+          if (format) {
+            value = Formatter[format](value);
+          }
+        }
       }
 
 
-      newAttribute.value = this.model[newAttribute.attribute];
+      if (UtilsType.isFunction(value)) {
+        value = value()
+      }
 
-      return newAttribute;
+      return {
+        attribute,
+        label,
+        format,
+        value,
+      };
     })
 
   }
 
+
+
+
+
+
+
   renderCaption(h, attribute) {
-    return attribute.attribute
+    return attribute.label
   }
 
   renderContent(h, attribute) {
     var nodes = [];
-    nodes.push(h('div', this.model[attribute.attribute]));
+    nodes.push(h('div', attribute.value));
 
     if (this.mode === 'edit') {
       ndoes.push(h('div', this.renderContentEdit(h, attribute)))

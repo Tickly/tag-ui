@@ -1,5 +1,5 @@
 import Column from './Column'
-import Formatter from './formatter'
+import Formatter from '@/utils/formatter'
 
 
 export default class DataColumn extends Column {

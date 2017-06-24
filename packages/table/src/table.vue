@@ -14,7 +14,8 @@ import TableHead from './table-head.vue'
 import TableBody from './table-body.vue'
 import TableFoot from './table-foot.vue'
 
-import Formatter from './formatter'
+import Formatter from '@/utils/formatter'
+
 import DataColumn from './DataColumn'
 import SerialColumn from './SerialColumn'
 import FormulaColumn from './FormulaColumn'
