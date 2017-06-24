@@ -18,7 +18,8 @@ export default {
                 attributes: [
                     'name',
                     'age',
-                ]
+                ],
+                title: '你开心就好',
             }
         }
     }
