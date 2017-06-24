@@ -15,18 +15,12 @@ export default class FormulaColumn extends DataColumn {
     return col.value(row);
   }
 
-
-  getFootCellContent() {
-
+  getFootCellValue(data, column) {
+    var array = data.map(v => {
+      return column.value(v);
+    });
+    return array.sum();
   }
 
-  renderFooterCellContent(h, data, column) {
-    console.log(data);
-    return data.reduce((a, b) => {
-      return 0;
-    }, 0);
 
-    // return this.getDataCellValue();
-    // return super.renderFootCellContent(h, data, column);
-  }
 }

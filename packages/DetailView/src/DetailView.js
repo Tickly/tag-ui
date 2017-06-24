@@ -64,7 +64,7 @@ export default class DetailView {
         if (!value) {
           value = this.model[attribute];
           if (format) {
-            value = Formatter[format](value);
+            value = Formatter.format(value, format);
           }
         }
       }

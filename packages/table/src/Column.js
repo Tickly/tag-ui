@@ -1,3 +1,5 @@
+import Formatter from '@/utils/formatter'
+
 export default class Column {
 
   constructor({
@@ -79,16 +81,17 @@ export default class Column {
     }, [this.renderFootCellContent(h, data, column)])
   }
   renderFootCellContent(h, data, column) {
-    // console.log('renderFootCellContent', data, column)
     if (!column.summary) return;
-    // console.log(data);
-    return data.column(column.attribute).sum();
+    return Formatter.format(this.getFootCellValue(data, column), column.format);
   }
   renderFootClass() {
     var classes = [];
     classes.push('text-' + this.hAlign);
     classes.push('vAlign-' + this.vAlign);
     return classes;
+  }
+  getFootCellValue(data, column) {
+    return data.column(column.attribute).sum();
   }
 
 

@@ -11,7 +11,8 @@ const formatter = {
   text: asText,
 }
 
-
+// 重点函数，别的地方只需调用这一个函数即可
+// formatter.format(value,format)
 function format(value, format) {
   return this[format](value);
 }

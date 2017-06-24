@@ -92,22 +92,19 @@ export default {
             options2: {
                 data,
                 bordered: true,
+                showSummary: true,
                 columns: [
                     'name',
-                    // 'age',
                     {
                         attribute: 'age',
-                        label: 'age + 5',
                         hAlign: 'center',
-                        // format(h, { row }) {
-                        //     return <button class="btn btn-default" onClick={() => { this.click1({ row }) }}>del</button>
-                        // }
                     },
                     'address',
                     {
                         attribute: 'money',
                         width: 200,
-                        format: 'currency'
+                        format: 'currency',
+                        summary: true,
                     },
                     {
                         attribute: 'date',
