@@ -260,6 +260,10 @@ export default {
                 } else if ('object' === type) {
                     if (column.type) {
                         if (ColumnClasses[column.type]) {
+                            if (column.type === 'formula') {
+
+                                console.log(column);
+                            }
                             return new ColumnClasses[column.type](column);
                         }
                     }

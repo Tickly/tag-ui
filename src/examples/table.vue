@@ -128,6 +128,15 @@ export default {
                         attribute: 'age',
                         width: 50,
                     },
+                    {
+                        type: 'formula',
+                        label: '相对于50岁',
+                        format: ['percent', 2],
+                        // format: 'percent',
+                        value(row) {
+                            return row.age / 50
+                        },
+                    },
                     'address',
                     {
                         label: '操作',
@@ -149,7 +158,7 @@ export default {
         }
     },
     created() {
-        console.log(this._renderProxy);
+        // console.log(this._renderProxy);
     },
 }
 </script>

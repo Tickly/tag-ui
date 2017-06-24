@@ -19,17 +19,6 @@ export default {
     data: Array,
     columns: Array,
   },
-  
-  methods: {
-    renderClass(col) {
-      var classes = [];
-
-      if (col.hAlign) classes.push('text-' + col.hAlign);
-      classes.push('vAlign-middle');
-
-      return classes;
-    }
-  }
 }
 </script>
 
