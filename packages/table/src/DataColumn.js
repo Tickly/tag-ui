@@ -33,6 +33,7 @@ export default class DataColumn extends Column {
     row,
     column
   }) {
+    console.log(this.format, column.format);
     return Formatter.format(this.getDataCellValue(row, column), this.format)
   }
 

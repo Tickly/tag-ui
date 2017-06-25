@@ -16,26 +16,26 @@ const formatter = {
 
 // 重点函数，别的地方只需调用这一个函数即可
 // formatter.format(value,format)
+// 此处format为引用传递，不能直接修改他
 function format(value, format) {
+
   let fn, params;
-
-
 
   if (Type.isArray(format)) {
     if (format.length === 0) {
       throw new Error('format 数组必须包含一个元素')
     }
-    console.log(JSON.stringify(format));
-    fn = format[0];
-    format[0] = value;
-    params = format;
+    // console.log(JSON.stringify(format));
+    params = format.slice();
+    fn = params[0];
+    params[0] = value;
   } else {
     fn = format;
     params = [value];
   }
   if (!this[fn]) {
 
-    console.log(fn, value, format)
+    // console.log(fn, value, format)
   }
 
   return this[fn].apply(null, params);
