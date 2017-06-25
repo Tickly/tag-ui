@@ -3,10 +3,13 @@
         <div class="panel-heading clearfix">
             <h3 class="panel-title pull-left" v-text="title"></h3>
             <div class="panel-tools pull-right">
-                <button type="button" class="btn btn-link btn-xs" aria-label="Left Align" @click="toggleCollapse">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true" v-if="collapsed"></span>
-                    <span class="glyphicon glyphicon-minus" aria-hidden="true" v-else></span>
-                </button>
+                <slot name="tools"></slot>
+                <template v-if="minable">
+                    <button type="button" class="btn btn-link btn-xs" aria-label="Left Align" @click="toggleCollapse">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true" v-if="collapsed"></span>
+                        <span class="glyphicon glyphicon-minus" aria-hidden="true" v-else></span>
+                    </button>
+                </template>
             </div>
         </div>
         <div class="panel-body">
@@ -30,6 +33,11 @@ export default {
         type: {
             type: String,
             default: 'default',
+        },
+        // 是否可最小化
+        minable: {
+            type: Boolean,
+            default: true,
         },
     },
     computed: {
