@@ -1,5 +1,6 @@
 import UtilsType from '@/utils/type'
 import Formatter from '@/utils/formatter'
+import Attribute from './Attribute'
 
 
 export default class DetailView {
@@ -39,84 +40,7 @@ export default class DetailView {
     }
 
     this.attributes = this.attributes.map((_attribute, i) => {
-      let attribute, format, label, value;
-
-      if (UtilsType.isString(_attribute)) {
-        [attribute, format, label] = _attribute.split(':');
-      } else if (UtilsType.isObject(_attribute)) {
-        ({
-          attribute,
-          format,
-          label,
-          value,
-        } = _attribute);
-      }
-
-      if (!format) {
-        format = 'text';
-      }
-
-      if (attribute) {
-        if (!label) {
-          label = attribute;
-        }
-
-        if (!value) {
-          value = this.model[attribute];
-          if (format) {
-            value = Formatter.format(value, format);
-          }
-        }
-      }
-
-
-      if (UtilsType.isFunction(value)) {
-        value = value()
-      }
-
-      return {
-        attribute,
-        label,
-        format,
-        value,
-      };
+      return new Attribute(_attribute);
     })
-
   }
-
-
-
-
-
-
-
-  renderCaption(h, attribute) {
-    return attribute.label
-  }
-
-  renderContent(h, attribute) {
-    var nodes = [];
-    nodes.push(h('div', attribute.value));
-
-    if (this.mode === 'edit') {
-      ndoes.push(h('div', this.renderContentEdit(h, attribute)))
-    }
-
-    return nodes
-  }
-  renderContentEdit(h, attribute) {
-
-  }
-
-
-  renderAttribute(h, attribute) {
-    return h('tr', {}, [
-      h('td', {}, this.renderCaption(h, attribute)),
-      h('td', {}, this.renderContent(h, attribute)),
-    ])
-  }
-
-
-
-
 }
