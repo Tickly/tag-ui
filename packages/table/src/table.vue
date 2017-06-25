@@ -284,7 +284,7 @@ export default {
         TableFoot,
     },
     render(h) {
-        return (new GridView()).render(h, {
+        return (new GridView(this.options)).render(h, {
             data: this.data,
             columns: this.columns_array,
         })

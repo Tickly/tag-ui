@@ -73,6 +73,8 @@ export default class Column {
       index
     });
   }
+
+  // 获取单元格的value，不同类型的列可重写该方法，比如公式列
   getDataCellValue({
     row
   }) {
@@ -91,14 +93,14 @@ export default class Column {
 
 
 
-  renderFootCell(h, data, column) {
+  renderFootCell(h, data) {
     return h('td', {
       class: this.renderDataClass(),
-    }, [this.renderFootCellContent(h, data, column)])
+    }, [this.renderFootCellContent(h, data)])
   }
-  renderFootCellContent(h, data, column) {
-    if (!column.summary) return;
-    return Formatter.format(this.getFootCellValue(data, column), column.format);
+  renderFootCellContent(h, data) {
+    if (!this.summary) return;
+    return Formatter.format(this.getFootCellValue(data), this.format);
   }
   renderFootClass() {
     var classes = [];
@@ -106,8 +108,12 @@ export default class Column {
     classes.push('vAlign-' + this.vAlign);
     return classes;
   }
-  getFootCellValue(data, column) {
-    return data.column(column.attribute).sum();
+  getFootCellValue(data) {
+    return data.map(row => {
+      return this.getDataCellValue({
+        row
+      })
+    }).sum();
   }
 
 

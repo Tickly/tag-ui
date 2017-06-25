@@ -5,24 +5,19 @@ export default class FormulaColumn extends DataColumn {
     super(options)
 
     var {
-      value = null,
+      formula,
     } = options;
 
-    this.value = value;
+    this.formula = formula;
+
   }
 
   getDataCellValue({
     row
   }) {
-    return this.value(row);
+    return this.formula(row);
   }
 
-  getFootCellValue(data, column) {
-    var array = data.map(v => {
-      return column.value(v);
-    });
-    return array.sum();
-  }
 
 
 }

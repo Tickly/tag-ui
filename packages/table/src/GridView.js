@@ -2,6 +2,14 @@ export default class GridView {
 
 
   constructor(options) {
+    let {
+      showPageSummary = false,
+    } = options;
+
+
+    this.showPageSummary = showPageSummary;
+
+
     this.renderProxy = null;
   }
 
@@ -11,12 +19,12 @@ export default class GridView {
     columns
   }) {
     return h('table', {
-      class: ['table']
+      class: ['table', 'table-bordered']
     }, [
       this.renderColGroup(h, columns),
       this.renderTableHead(h, columns),
       this.renderTableBody(h, data, columns),
-      this.renderTableFoot(h),
+      this.renderTableFoot(h, data, columns),
     ])
   }
   renderColGroup(h, columns) {
@@ -51,8 +59,11 @@ export default class GridView {
       }))
     }))
   }
-  renderTableFoot(h) {
-    return h('tfoot')
+  renderTableFoot(h, data, columns) {
+    if (!this.showPageSummary) return;
+    return h('tfoot', {}, columns.map(col => {
+      return col.renderFootCell(h, data);
+    }))
   }
 
 
