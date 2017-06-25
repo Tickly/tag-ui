@@ -1,16 +1,25 @@
 export default class GridView {
+  constructor(options, renderProxy) {
+    // let {
+    //   hover,
+    //   striped,
+    //   bordered,
+    //   showPageSummary = false,
+    // } = options;
 
 
-  constructor(options) {
-    let {
-      showPageSummary = false,
-    } = options;
+    this.showPageSummary = false;
+    this.hover = false;
+    this.bordered = false;
+    this.striped = false;
+    this.condensed = false;
+    this.responsive = false;
 
 
-    this.showPageSummary = showPageSummary;
+    Object.assign(this, options);
 
 
-    this.renderProxy = null;
+    this.renderProxy = renderProxy;
   }
 
 
@@ -18,8 +27,26 @@ export default class GridView {
     data,
     columns
   }) {
+    if (this.responsive) {
+      return h('div', {
+        class: 'table-responsive'
+      }, [this.renderTable(h, {
+        data,
+        columns
+      })])
+    }
+    return this.renderTable(h, {
+      data,
+      columns
+    })
+  }
+
+  renderTable(h, {
+    data,
+    columns
+  }) {
     return h('table', {
-      class: ['table', 'table-bordered']
+      class: this.renderTableClass()
     }, [
       this.renderColGroup(h, columns),
       this.renderTableHead(h, columns),
@@ -27,6 +54,7 @@ export default class GridView {
       this.renderTableFoot(h, data, columns),
     ])
   }
+
   renderColGroup(h, columns) {
     return h('colgroup', {}, columns.map(col => {
       return h('col', {
@@ -35,6 +63,15 @@ export default class GridView {
         }
       });
     }))
+  }
+
+  renderTableClass() {
+
+    var classes = ['table'];
+    if (this.hover) classes.push('table-hover');
+    if (this.bordered) classes.push('table-bordered');
+    if (this.striped) classes.push('table-striped');
+    return classes;
   }
 
 
@@ -55,15 +92,17 @@ export default class GridView {
         return col.renderDataCell(h, {
           row,
           index
-        });
+        }, this.renderProxy);
       }))
     }))
   }
   renderTableFoot(h, data, columns) {
     if (!this.showPageSummary) return;
-    return h('tfoot', {}, columns.map(col => {
-      return col.renderFootCell(h, data);
-    }))
+    return h('tfoot', {}, [
+      h('tr', {}, columns.map(col => {
+        return col.renderFootCell(h, data);
+      }))
+    ])
   }
 
 

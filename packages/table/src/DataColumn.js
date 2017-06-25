@@ -16,7 +16,7 @@ export default class DataColumn extends Column {
 
 
 
-  renderDataCellContent({
+  renderDataCellContent(h, {
     row
   }) {
     return Formatter.format(this.getDataCellValue({

@@ -62,6 +62,7 @@ export default {
             options1: {
                 // bordered: true,
                 hover: true,
+                responsive: true,
                 data,
                 columns: [
                     { type: 'serial' },
@@ -82,6 +83,7 @@ export default {
             options2: {
                 data,
                 bordered: true,
+                striped: true,
                 showPageSummary: true,
                 columns: [
                     { type: 'serial' },
@@ -142,7 +144,7 @@ export default {
                             //     h('button',123),
                             // ]
                             return <button class="btn btn-default" onClick={() => {
-                                console.log(this, row);
+                                console.log(this.click1({ row }));
                             }}>del</button>
                         },
                     },

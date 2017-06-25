@@ -50,21 +50,18 @@ export default class Column {
 
 
 
-  renderDataCell(h, {
-    row,
-    index
-  }) {
+  renderDataCell(h, options, parent) {
     return h('td', {
       class: this.renderDataClass(),
-      domProps: {
-        innerHTML: this.renderDataCellContent({
-          row,
-          index
-        })
-      }
-    })
+      // domProps: {
+      //   innerHTML: this.renderDataCellContent({
+      //     row,
+      //     index
+      //   })
+      // }
+    }, [this.renderDataCellContent(h, options, parent)])
   }
-  renderDataCellContent({
+  renderDataCellContent(h, {
     row,
     index
   }) {
