@@ -11,30 +11,17 @@ export default class DataColumn extends Column {
       format = 'text',
     } = options;
 
-    // console.log(format);
     this.format = format;
   }
 
-  parseFormat(format) {
-    if (Type.isString(format)) {
 
-    }
-  }
-
-
-  getDataCellValue(row, col) {
-    if (col.attribute) {
-      return row[col.attribute]
-    }
-    return null;
-  }
 
   renderDataCellContent({
-    row,
-    column
+    row
   }) {
-    console.log(this.format, column.format);
-    return Formatter.format(this.getDataCellValue(row, column), this.format)
+    return Formatter.format(this.getDataCellValue({
+      row
+    }), this.format)
   }
 
 }

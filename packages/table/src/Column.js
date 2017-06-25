@@ -6,14 +6,19 @@ export default class Column {
     attribute,
     label,
     summary = false,
+    width,
   }) {
 
     this.attribute = attribute;
     this.label = label;
     this.summary = summary;
 
+    this.width = width;
+
     this.vAlign = 'middle';
     this.hAlign = 'center';
+
+
 
     // 所有该列的值
     this.column_values = [];
@@ -45,23 +50,34 @@ export default class Column {
 
 
 
-  renderDataCell(h, data) {
+  renderDataCell(h, {
+    row,
+    index
+  }) {
     return h('td', {
       class: this.renderDataClass(),
       domProps: {
-        innerHTML: this.renderDataCellContent(data)
+        innerHTML: this.renderDataCellContent({
+          row,
+          index
+        })
       }
     })
   }
   renderDataCellContent({
     row,
-    column
+    index
   }) {
-    return this.getDataCellValue(row, col);
+    return this.getDataCellValue({
+      row,
+      index
+    });
   }
-  getDataCellValue(row, col) {
-    if (column.attribute)
-      return row[column.attribute]
+  getDataCellValue({
+    row
+  }) {
+    if (this.attribute)
+      return row[this.attribute]
     return null;
   }
   renderDataClass() {

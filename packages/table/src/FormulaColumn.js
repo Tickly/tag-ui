@@ -11,8 +11,10 @@ export default class FormulaColumn extends DataColumn {
     this.value = value;
   }
 
-  getDataCellValue(row, col) {
-    return col.value(row);
+  getDataCellValue({
+    row
+  }) {
+    return this.value(row);
   }
 
   getFootCellValue(data, column) {

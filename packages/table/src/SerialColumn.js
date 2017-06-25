@@ -5,12 +5,13 @@ export default class SerialColumn extends Column {
     super(options);
 
     this.label = '#';
+    this.width = '50';
   }
 
-  renderDataCellContent({
-    rowIndex
+  getDataCellValue({
+    index
   }) {
-    return rowIndex + 1
+    return index + 1
   }
 
 

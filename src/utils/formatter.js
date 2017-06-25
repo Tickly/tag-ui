@@ -48,12 +48,12 @@ function asText(value) {
   return value
 }
 
-function asDate(value) {
-  return moment(value).format('Y-MM-DD')
+function asDate(value, format = 'Y-MM-DD') {
+  return moment(value).format(format)
 }
 
-function asTime(value) {
-  return moment(value).format('HH:mm:ss')
+function asTime(value,format = 'HH:mm:ss') {
+  return moment(value).format(format)
 }
 
 function asCurrency(value) {

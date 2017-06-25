@@ -1,18 +1,21 @@
-<template>
-    <table class="table" :class="tableClass">
-        <colgroup>
-            <col v-for="(col,i) in _columns" :key="i" :width="_colWidth(col)">
-        </colgroup>
-        <thead is="table-head" :columns="columns_array"></thead>
-        <tbody is="table-body" :columns="columns_array" :data="data"></tbody>
-        <tfoot is="table-foot" v-if="showSummary" :columns="columns_array" :data="data"></tfoot>
-    </table>
-</template>
 <script>
+// <template>
+//     <table class="table" :class="tableClass">
+//         <colgroup>
+//             <col v-for="(col,i) in _columns" :key="i" :width="_colWidth(col)">
+//         </colgroup>
+//         <thead is="table-head" :columns="columns_array"></thead>
+//         <tbody is="table-body" :columns="columns_array" :data="data"></tbody>
+//         <tfoot is="table-foot" v-if="showSummary" :columns="columns_array" :data="data"></tfoot>
+//     </table>
+// </template>
+
 // import Vue from 'vue'
 import TableHead from './table-head.vue'
 import TableBody from './table-body.vue'
 import TableFoot from './table-foot.vue'
+
+import GridView from './GridView'
 
 import Formatter from '@/utils/formatter'
 
@@ -124,7 +127,6 @@ export default {
         }
     },
     created() {
-        // console.log(this)
         this.initColumns();
     },
     computed: {
@@ -260,18 +262,12 @@ export default {
                 } else if ('object' === type) {
                     if (column.type) {
                         if (ColumnClasses[column.type]) {
-                            if (column.type === 'formula') {
-
-                                console.log(column);
-                            }
                             return new ColumnClasses[column.type](column);
                         }
                     }
                 }
                 return new DataColumn(column);
             })
-
-            // console.log(this.columns_array)
         },
         createDataColumn(text) {
             var [attribute, label] = text.split(':');
@@ -286,6 +282,12 @@ export default {
         TableHead,
         TableBody,
         TableFoot,
+    },
+    render(h) {
+        return (new GridView()).render(h, {
+            data: this.data,
+            columns: this.columns_array,
+        })
     }
 }
 </script>

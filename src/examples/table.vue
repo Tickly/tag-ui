@@ -7,7 +7,7 @@
             </div>
         </section>
         <section>
-            <h3>基础表格，带边框</h3>
+            <h3>列的类型，统计，数据的格式化，</h3>
             <div>
                 <tag-table :options="options2"></tag-table>
             </div>
@@ -62,7 +62,6 @@ export default {
             options1: {
                 // bordered: true,
                 hover: true,
-                showSummary: true,
                 data,
                 columns: [
                     { type: 'serial' },
@@ -71,17 +70,8 @@ export default {
                     // 'age',
                     {
                         attribute: 'age',
-                        summary: true,
                         hAlign: 'center',
                         width: 100,
-                    },
-                    {
-                        type: 'formula',
-                        label: '十年后(公式列)',
-                        summary: true,
-                        value: (row) => {
-                            return row.age + 10
-                        }
                     },
                     {
                         attribute: 'address',
@@ -94,25 +84,37 @@ export default {
                 bordered: true,
                 showSummary: true,
                 columns: [
+                    { type: 'serial' },
                     'name',
                     {
                         attribute: 'age',
                         hAlign: 'center',
                     },
-                    'address',
+                    {
+                        type: 'formula',
+                        label: '相对于50岁(公式列)',
+                        format: ['percent', 2],
+                        // format: 'percent',
+                        value(row) {
+                            return row.age / 50
+                        },
+                    },
+                    // 'address',
                     {
                         attribute: 'money',
+                        label: '货币格式',
                         width: 200,
                         format: 'currency',
                         summary: true,
                     },
                     {
                         attribute: 'date',
+                        label: '日期格式',
                         format: 'date',
                     },
                     {
                         attribute: 'date',
-                        label: 'time',
+                        label: '时间格式',
                         format: 'time',
                     },
                 ]
@@ -128,21 +130,16 @@ export default {
                         attribute: 'age',
                         width: 50,
                     },
-                    {
-                        type: 'formula',
-                        label: '相对于50岁',
-                        format: ['percent', 2],
-                        // format: 'percent',
-                        value(row) {
-                            return row.age / 50
-                        },
-                    },
+
                     'address',
                     {
                         label: '操作',
                         type: 'template',
                         template(h, { row }) {
-
+                            // return [
+                            //     h('button',123),
+                            //     h('button',123),
+                            // ]
                             return <button class="btn btn-default" onClick={() => {
                                 console.log(this, row);
                             }}>del</button>

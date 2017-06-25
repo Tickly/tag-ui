@@ -19,6 +19,10 @@ export default class TemplateColumn extends Column {
       domProps: {
         // innerHTML: this.renderDataCellContent(data)
       }
-    }, [this.template(h, data)])
+    }, this.renderTemplate(h, data))
+  }
+
+  renderTemplate(h, data) {
+    return [this.template(h, data)]
   }
 }
