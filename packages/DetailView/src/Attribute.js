@@ -2,19 +2,24 @@ import UtilsType from '@/utils/type'
 import Formatter from '@/utils/formatter'
 
 
-export default class Attribute {
-  constructor(options) {
-    let attribute, format, label, value;
 
-    if (UtilsType.isString(options)) {
-      [attribute, format, label] = options.split(':');
-    } else if (UtilsType.isObject(options)) {
+
+
+class Attribute {
+  constructor(_options) {
+    let attribute, format, label, value, type, options;
+
+    if (UtilsType.isString(_options)) {
+      [attribute, format, label] = _options.split(':');
+    } else if (UtilsType.isObject(_options)) {
       ({
         attribute,
         format,
         label,
         value,
-      } = options);
+        type,
+        options,
+      } = _options);
     }
 
     if (attribute) {
@@ -27,6 +32,8 @@ export default class Attribute {
     this.attribute = attribute;
     this.format = format || 'text';
     this.label = label;
+    this.type = type || 'text';
+    this.options = Object.assign({}, options);
   }
 
 
@@ -63,7 +70,19 @@ export default class Attribute {
   }
 
   renderContentEdit(h, model) {
+    if (Attribute.InputList.contains(this.type)) {
+      return this.renderInput(h, model);
+    }
+
+    return h(this.type, this.options);
+  }
+
+
+  renderInput(h, model) {
     return h('input', {
+      attrs: {
+        type: this.type,
+      },
       domProps: {
         value: this.getValue(model)
       },
@@ -73,4 +92,15 @@ export default class Attribute {
     })
   }
 
+
 }
+
+
+
+Attribute.InputList = [
+  'text',
+  'number',
+  'date',
+]
+
+export default Attribute

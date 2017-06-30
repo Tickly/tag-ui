@@ -20,7 +20,6 @@
                         <button class="btn btn-default" @click="click1(scope)">删除</button>
                     </template>
                 </tag-table>
-                <tag-pagination :total="options3.data.length" :pageSize="1"></tag-pagination>
             </div>
         </section>
     </div>
@@ -91,6 +90,7 @@ export default {
                     {
                         attribute: 'age',
                         hAlign: 'center',
+                        summary: true,
                     },
                     {
                         type: 'formula',

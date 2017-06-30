@@ -17,14 +17,28 @@ export default {
                 },
                 attributes: [
                     'name:text:姓名',
-                    'age',
+                    {
+                        attribute: 'age',
+                        type: 'number',
+                    },
+                    // 'age',
                     'money:currency',
                     {
                         attribute: 'address',
-                        value(){
+                        type: 'textarea',
+                        options: {
+                            attrs: {
+                                rows: 6,
+                            }
+                        },
+                        value() {
                             return 1
                         }
                     },
+                    {
+                        attribute: 'date',
+                        type: 'date',
+                    }
                 ],
                 title: '你开心就好',
             }
