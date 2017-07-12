@@ -3,7 +3,7 @@
         123
         <div slot="footer">footer</div>
         <template slot="tools">
-            <button type="button" class="btn btn-link btn-xs" aria-label="Left Align" @click="toggleCollapse">
+            <button type="button" class="btn btn-link btn-xs" aria-label="Left Align">
                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
             </button>
         </template>
