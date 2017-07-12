@@ -1,8 +1,6 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import App from './App'
-import router from './router'
 
 // 扩展一些方法
 import './extends'
@@ -12,7 +10,6 @@ import components from './components'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
-Vue.config.productionTip = false
 
 for (var key in components) {
   if (components.hasOwnProperty(key)) {
@@ -21,12 +18,10 @@ for (var key in components) {
   }
 }
 
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  template: '<App/>',
-  components: {
-    App
-  }
-})
+
+
+
+export default {
+  version: '',
+  ...components,
+}

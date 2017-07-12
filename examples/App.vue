@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-sm-3">
         <ul>
-          <li v-for="(component,key) in examples">
+          <li v-for="(component,key) in examples" :key="key">
             <a :href="'/'+key">{{key}}</a>
           </li>
         </ul>
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import examples from './examples'
+import examples from './index'
 export default {
   name: 'app',
   data() {

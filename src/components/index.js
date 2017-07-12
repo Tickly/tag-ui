@@ -5,12 +5,15 @@ import Pagination from '../../packages/pagination'
 import DetailView from '../../packages/DetailView'
 
 
-const components = [
+const components = {
   Panel,
   Button,
   GridView,
   Pagination,
   DetailView,
-]
+}
+
+
+
 
 export default components

@@ -3,7 +3,7 @@ import Router from 'vue-router'
 
 import Layout from '@/components/layout'
 
-import examples from '../examples'
+import examples from '../index'
 
 
 Vue.use(Router)

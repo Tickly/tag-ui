@@ -2,20 +2,18 @@
 
 > A Vue.js project
 
-## Build Setup
 
-``` bash
-# install dependencies
-npm install
+- 借鉴了[element-ui](https://github.com/ElemeFE/element)的代码结构。
+- 借鉴了[Kartik Visweswaran](https://github.com/kartik-v)的组件设计，基于yii框架。
 
-# serve with hot reload at localhost:8080
-npm run dev
 
-# build for production with minification
-npm run build
+## 组件
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
+- Button
+- Panel
+- Table(GridView)
+- Pagination
+- DetailView
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+具体组件用法参见`examples`目录，组件还不成熟，持续维护中。。。
