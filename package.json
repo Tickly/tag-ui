@@ -8,12 +8,16 @@
     "dist",
     "packages"
   ],
+  "main": "dist/app.js",
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
     "build": "node build/build.js"
   },
   "dependencies": {
+    "accounting": "^0.4.1",
+    "bootstrap": "^3.3.7",
+    "moment": "^2.18.1",
     "vue": "^2.3.3"
   },
   "devDependencies": {

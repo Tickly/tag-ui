@@ -7,7 +7,6 @@ import './extends'
 
 import components from './components'
 
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 
