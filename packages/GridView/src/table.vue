@@ -23,7 +23,15 @@ export default {
         options: {
             type: Object,
             default: {},
-        }
+        },
+        data: {
+            type: Array,
+            required: true,
+        },
+        columns: {
+            type: Array,
+            required: true,
+        },
     },
     data() {
         return {
@@ -34,12 +42,7 @@ export default {
         this.initColumns();
     },
     computed: {
-        data() {
-            return this.options.data;
-        },
-        columns() {
-            return this.options.columns;
-        },
+
     },
     methods: {
         // 初始化列
@@ -71,7 +74,7 @@ export default {
     },
     render(h) {
         // console.log(this.$parent);
-        return (new GridView(this.options, this.$parent)).render(h, {
+        return (new GridView({}, this.$parent)).render(h, {
             data: this.data,
             columns: this.columns_array,
         })

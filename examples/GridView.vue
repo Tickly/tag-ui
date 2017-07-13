@@ -3,19 +3,19 @@
         <section>
             <h3>基础表格</h3>
             <div>
-                <tag-table :options="options1"></tag-table>
+                <tag-table :options="options1" :data="options1.data" :columns="options1.columns"></tag-table>
             </div>
         </section>
         <section>
             <h3>列的类型，统计，数据的格式化，</h3>
             <div>
-                <tag-table :options="options2"></tag-table>
+                <tag-table :options="options2" :data="options2.data" :columns="options2.columns"></tag-table>
             </div>
         </section>
         <section>
             <h3>带操作的列</h3>
             <div>
-                <tag-table :options="options3">
+                <tag-table :options="options3" :data="options3.data" :columns="options3.columns">
                     <template slot="col-action" scope="scope">
                         <button class="btn btn-default" @click="click1(scope)">删除</button>
                     </template>
