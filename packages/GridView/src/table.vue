@@ -1,9 +1,4 @@
 <script>
-// import Vue from 'vue'
-// import TableHead from './table-head.vue'
-// import TableBody from './table-body.vue'
-// import TableFoot from './table-foot.vue'
-
 import GridView from './GridView'
 
 import Formatter from '@/utils/formatter'
@@ -20,6 +15,7 @@ const ColumnClasses = {
     formula: FormulaColumn,
     template: TemplateColumn,
 }
+
 
 export default {
     name: 'TagTable',
