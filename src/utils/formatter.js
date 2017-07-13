@@ -52,11 +52,12 @@ function asDate(value, format = 'Y-MM-DD') {
   return moment(value).format(format)
 }
 
-function asTime(value,format = 'HH:mm:ss') {
+function asTime(value, format = 'HH:mm:ss') {
   return moment(value).format(format)
 }
 
 function asCurrency(value) {
+  if (!value) return;
   return accounting.formatMoney(value, '￥ ')
 }
 
