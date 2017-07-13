@@ -8,7 +8,7 @@
     "dist",
     "packages"
   ],
-  "main": "dist/app.js",
+  "main": "dist/static/js/app.js",
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
