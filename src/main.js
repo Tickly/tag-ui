@@ -3,7 +3,6 @@ import './extends'
 
 import components from './components'
 
-
 const install = function (Vue) {
   if (install.installed) return;
 
@@ -25,3 +24,5 @@ export default {
   install,
   ...components,
 }
+
+// console.log(1);
