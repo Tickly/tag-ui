@@ -18,5 +18,8 @@ Array.prototype.column = function (column) {
  * 计算数组元素总和
  */
 Array.prototype.sum = function () {
-  return this.reduce((a, b) => (+a) + (+b), 0)
+  return this.reduce((a, b) => {
+    if (b === undefined) return a
+    return (+a) + (+b)
+  }, 0)
 }
