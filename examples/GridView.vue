@@ -3,13 +3,13 @@
         <section>
             <h3>基础表格</h3>
             <div>
-                <tag-table :options="options1" :data="options1.data" :columns="options1.columns"></tag-table>
+                <tag-table :options="options1" :data="options1.data" :columns="options1.columns" :bordered="true"></tag-table>
             </div>
         </section>
         <section>
             <h3>列的类型，统计，数据的格式化，</h3>
             <div>
-                <tag-table :options="options2" :data="options2.data" :columns="options2.columns"></tag-table>
+                <tag-table :options="options2" :data="options2.data" :columns="options2.columns" :showPageSummary="true" :striped="true" :bordered="true"></tag-table>
             </div>
         </section>
         <section>
@@ -159,6 +159,9 @@ export default {
     },
     created() {
         // console.log(this._renderProxy);
+    },
+    render(h) {
+
     },
 }
 </script>

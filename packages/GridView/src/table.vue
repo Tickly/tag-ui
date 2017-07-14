@@ -32,6 +32,11 @@ export default {
             type: Array,
             required: true,
         },
+        showPageSummary: Boolean,
+        hover: Boolean,
+        bordered: Boolean,
+        striped: Boolean,
+        responsive: Boolean,
     },
     data() {
         return {
@@ -74,7 +79,13 @@ export default {
     },
     render(h) {
         // console.log(this.$parent);
-        return (new GridView({}, this.$parent)).render(h, {
+        return (new GridView({
+            showPageSummary: this.showPageSummary,
+            hover: this.hover,
+            bordered: this.bordered,
+            striped: this.striped,
+            responsive: this.responsive,
+        }, this.$parent)).render(h, {
             data: this.data,
             columns: this.columns_array,
         })
