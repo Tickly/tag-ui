@@ -1,4 +1,4 @@
-import Formatter from '@/utils/formatter'
+import TagFormatter from 'tag-formatter'
 
 export default class Column {
 
@@ -97,7 +97,7 @@ export default class Column {
   }
   renderFootCellContent(h, data) {
     if (!this.summary) return;
-    return Formatter.format(this.getFootCellValue(data), this.format);
+    return TagFormatter.format(this.getFootCellValue(data), this.format);
   }
   renderFootClass() {
     var classes = [];

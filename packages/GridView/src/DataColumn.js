@@ -1,5 +1,5 @@
 import Column from './Column'
-import Formatter from '@/utils/formatter'
+import TagFormatter from 'tag-formatter'
 import Type from '@/utils/type'
 
 
@@ -19,7 +19,7 @@ export default class DataColumn extends Column {
   renderDataCellContent(h, {
     row
   }) {
-    return Formatter.format(this.getDataCellValue({
+    return TagFormatter.format(this.getDataCellValue({
       row
     }), this.format)
   }

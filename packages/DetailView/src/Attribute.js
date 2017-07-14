@@ -1,5 +1,5 @@
 import UtilsType from '@/utils/type'
-import Formatter from '@/utils/formatter'
+import TagFormatter from 'tag-formatter'
 
 
 
@@ -41,7 +41,7 @@ class Attribute {
     return model[this.attribute]
   }
   getDisplayValue(model) {
-    return Formatter.format(this.getValue(model), this.format);
+    return TagFormatter.format(this.getValue(model), this.format);
   }
 
 

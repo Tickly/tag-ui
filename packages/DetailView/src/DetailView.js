@@ -1,5 +1,4 @@
 import UtilsType from '@/utils/type'
-import Formatter from '@/utils/formatter'
 import Attribute from './Attribute'
 
 

@@ -1,8 +1,6 @@
 <script>
 import GridView from './GridView'
 
-import Formatter from '@/utils/formatter'
-
 import DataColumn from './DataColumn'
 import SerialColumn from './SerialColumn'
 import FormulaColumn from './FormulaColumn'

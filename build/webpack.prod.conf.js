@@ -45,6 +45,9 @@ var webpackConfig = merge(baseWebpackConfig, {
       commonjs2: 'accounting',
       amd: 'accounting',
     },
+    'tag-formatter': {
+      commonjs2: 'tag-formatter'
+    },
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
