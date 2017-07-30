@@ -27,18 +27,13 @@ export default class GridView {
     data,
     columns
   }) {
-    if (this.responsive) {
-      return h('div', {
-        class: 'table-responsive'
-      }, [this.renderTable(h, {
-        data,
-        columns
-      })])
-    }
-    return this.renderTable(h, {
+    return h('div', {
+      // class: 'table-responsive'
+      class: this.renderWrapClass()
+    }, [this.renderTable(h, {
       data,
       columns
-    })
+    })])
   }
 
   renderTable(h, {
@@ -65,8 +60,12 @@ export default class GridView {
     }))
   }
 
+  renderWrapClass() {
+    var classes = ['tag-gridview'];
+    // if(this.responsive) classes.push('tab')
+    return classes;
+  }
   renderTableClass() {
-
     var classes = ['table'];
     if (this.hover) classes.push('table-hover');
     if (this.bordered) classes.push('table-bordered');

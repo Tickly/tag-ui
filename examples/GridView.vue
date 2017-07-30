@@ -1,8 +1,8 @@
 <template>
     <div>
         <section>
-            <h3>基础表格2345678910111213</h3>
-            <div style="overflow:scroll;">
+            <h3>基础表格</h3>
+            <div>
                 <tag-table :options="options1" :data="options1.data" :columns="options1.columns" :bordered="true"></tag-table>
             </div>
         </section>
@@ -76,7 +76,16 @@ export default {
                     {
                         attribute: 'address',
                         label: '地址',
-                    }
+                    },
+                    'address',
+                    'address',
+                    'address',
+                    'address',
+                    'address',
+                    'address',
+                    'address',
+                    'address',
+                    'address',
                 ],
             },
             options2: {

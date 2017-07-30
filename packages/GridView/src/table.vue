@@ -97,4 +97,13 @@ export default {
         vertical-align: middle;
     }
 }
+
+
+.tag-gridview {
+    overflow: scroll;
+    
+    td {
+        white-space: nowrap;
+    }
+}
 </style>
