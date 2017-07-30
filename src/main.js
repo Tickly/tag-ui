@@ -1,7 +1,8 @@
 // 扩展一些方法
 import './extends'
 
-import components from './components'
+// import components from './components'
+import components from '../packages'
 
 const install = function (Vue) {
   if (install.installed) return;

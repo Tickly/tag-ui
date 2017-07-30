@@ -74,7 +74,8 @@ class Attribute {
       return this.renderInput(h, model);
     }
 
-    return h(this.type, this.options);
+    // return h(this.type, this.options);
+    return h(this.type);
   }
 
 

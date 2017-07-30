@@ -1,15 +1,21 @@
 import Panel from './panel'
 import Button from './button'
+import GridView from './GridView'
 import Pagination from './pagination'
 import DetailView from './DetailView'
-import GridView from './GridView'
 import Tree from './Tree'
 
-export default {
+
+const components = {
   Panel,
   Button,
+  GridView,
   Pagination,
   DetailView,
-  GridView,
   Tree,
 }
+
+
+
+
+export default components
