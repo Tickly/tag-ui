@@ -37,6 +37,7 @@ module.exports = {
           resolve('src'),
           resolve('test'),
           resolve('packages'),
+          resolve('examples'),
         ],
         exclude: /node_modules/,
         use: {

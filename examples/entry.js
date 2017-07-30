@@ -7,8 +7,9 @@ import TagUI from '../src/main'
 
 import App from './App' 
 
+
 Vue.use(TagUI)
-// console.log(TagUI)
+console.log(TagUI)
 
 Vue.config.productionTip = false
 
@@ -21,3 +22,4 @@ new Vue({
     App
   }
 })
+

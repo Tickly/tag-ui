@@ -1,8 +1,8 @@
 <template>
     <div>
         <section>
-            <h3>基础表格</h3>
-            <div>
+            <h3>基础表格2345678910111213</h3>
+            <div style="overflow:scroll;">
                 <tag-table :options="options1" :data="options1.data" :columns="options1.columns" :bordered="true"></tag-table>
             </div>
         </section>
