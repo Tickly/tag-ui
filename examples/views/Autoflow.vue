@@ -30,22 +30,23 @@ export default {
         },
         renderItem(h, item, next) {
             // console.log('renderItem', item.title)
-            // this.$nextTick(function () {
-            //     next();
-            // })
+            // 纯文字就用下面的方式调用next，图片就onload里面调用next
+            this.$nextTick(function () {
+                next();
+            })
             return h('div', {
                 class: 'item'
             }, [
-                    h('img', {
-                        attrs: {
-                            src: item.img
-                        },
-                        on: {
-                            load: e => {
-                                next();
-                            }
-                        }
-                    }),
+                    // h('img', {
+                    //     attrs: {
+                    //         src: item.img
+                    //     },
+                    //     on: {
+                    //         load: e => {
+                    //             next();
+                    //         }
+                    //     }
+                    // }),
                     h('p', item.title)
                 ])
         }

@@ -1,7 +1,4 @@
 <script>
-/**
- * 发现render有点问题，加入元素的时候，所有已加入的元素都会重新render一遍，导致下次会调用很多next
- */
 export default {
     name: 'TagAutoflow',
     props: {
@@ -56,19 +53,17 @@ export default {
             }
             if (this.queue.length < 1) return;
 
-            this.$nextTick(function () {
-                // 找到当前高度最小的列
-                let min = 0;
+            // 找到当前高度最小的列
+            let min = 0;
 
-                Array.prototype.reduce.call(this.$el.children, (a, b, i) => {
-                    // console.log(a.offsetHeight, b.offsetHeight);
-                    if (b.offsetHeight < a.offsetHeight) return min = i, b;
-                    return a;
-                });
-
-                // 把元素加到对应的列里
-                this.columns[min].push(this.queue.shift());
+            Array.prototype.reduce.call(this.$el.children, (a, b, i) => {
+                // console.log(a.offsetHeight, b.offsetHeight);
+                if (b.offsetHeight < a.offsetHeight) return min = i, b;
+                return a;
             });
+
+            // 把元素加到对应的列里
+            this.columns[min].push(this.queue.shift());
         },
         updateQueue(list) {
             // 拷贝数组
