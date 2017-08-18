@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import examples from './index'
+import examples from './views'
 export default {
   name: 'app',
   data() {

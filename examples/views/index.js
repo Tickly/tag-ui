@@ -4,6 +4,7 @@ import Pagination from './pagination'
 import DetailView from './DetailView'
 import GridView from './GridView'
 import Tree from './Tree'
+import Autoflow from './Autoflow'
 
 export default {
   Panel,
@@ -12,4 +13,5 @@ export default {
   DetailView,
   GridView,
   Tree,
+  Autoflow,
 }
