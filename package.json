@@ -1,7 +1,7 @@
 {
   "name": "tag-ui",
   "version": "1.0.18",
-  "description": "A Vue.js project",
+  "description": "一套常用组件库，GridView,DetailView,Form等等",
   "author": "tickly <807081817@qq.com>",
   "files": [
     "src",
