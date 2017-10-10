@@ -1,15 +1,15 @@
 <template>
   <tag-form ref="myForm" :form="form" :labels="labels" :rules="rules" @submit.prevent.native="handleSubmit">
-    <tag-form-item attr="name"><input v-model="form.name" class="form-control"></tag-form-item>
-    <tag-form-item attr="region"><input v-model="form.region" class="form-control"></tag-form-item>
-    <tag-form-item attr="delivery"><input class="form-control"></tag-form-item>
-    <tag-form-item attr="type">
+    <tag-form-item attr="name" label="活动名称"><input v-model="form.name" class="form-control"></tag-form-item>
+    <tag-form-item attr="region" label="活动区域"><input v-model="form.region" class="form-control"></tag-form-item>
+    <tag-form-item attr="delivery" label="即时配送"><input class="form-control"></tag-form-item>
+    <tag-form-item attr="type" label="活动性质">
       <tag-checkbox v-model="form.type" :data="data_checkbox" />
     </tag-form-item>
-    <tag-form-item attr="resouce">
+    <tag-form-item attr="resouce" label="特殊资源">
       <tag-radio v-model="form.resouce" :data="data_radio" />
     </tag-form-item>
-    <tag-form-item attr="desc">
+    <tag-form-item attr="desc" label="活动形式">
       <textarea class="form-control" />
     </tag-form-item>
     <tag-form-item>
@@ -30,14 +30,7 @@ export default {
         resouce: null,
         desc: null,
       },
-      labels: {
-        name: '活动名称',
-        region: '活动区域',
-        delivery: '即时配送',
-        type: '活动性质',
-        resouce: '特殊资源',
-        desc: '活动形式',
-      },
+      labels: {},
       rules: [
         [['name', 'region', 'type', 'resouce'], 'required']
       ]

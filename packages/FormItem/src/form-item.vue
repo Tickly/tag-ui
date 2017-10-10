@@ -1,6 +1,6 @@
 <template>
     <div class="form-group" :class="classBuidler">
-        <label class="control-label col-sm-2">{{_label}}</label>
+        <label class="control-label col-sm-2">{{ label }}</label>
         <div class="col-sm-10">
             <slot></slot>
             <span v-if="error" class="help-block">{{ error }}</span>
@@ -21,21 +21,21 @@ export default {
         },
         error() {
             var error = this.form.model.errors[this.attr];
-            if (error) return error[0]
+            if (error) return error[0].replace(this.attr, this.label)
         },
         classBuidler() {
             var classes = [];
             if (this.error) classes.push('has-error')
             return classes;
         },
-        _label() {
-            if (this.label) return this.label
+        // _label() {
+        //     if (this.label) return this.label
 
-            if (this.attr && this.form) {
-                return this.form.labels[this.attr]
-            }
+        //     if (this.attr && this.form) {
+        //         return this.form.labels[this.attr]
+        //     }
 
-        },
+        // },
     }
 }
 </script>

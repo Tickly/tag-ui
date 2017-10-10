@@ -29,8 +29,7 @@ export default {
     methods: {
         validate() {
             this.model.form = this.form;
-            this.model.validate();
-            // console.log('validate')
+            return this.model.validate();
         }
     }
 }

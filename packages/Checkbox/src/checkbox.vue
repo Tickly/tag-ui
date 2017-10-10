@@ -1,6 +1,6 @@
 <template>
     <div class="checkbox">
-        <label v-for="option in options" :key="option.value" class="radio-inline">
+        <label v-for="option in options" :key="option.value" class="checkbox-inline">
             <input v-model="checked" :value="option.value" type="checkbox" @change="handleChange"> {{ option.text }}
         </label>
     </div>
