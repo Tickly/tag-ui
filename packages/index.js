@@ -5,6 +5,10 @@ import Pagination from './pagination'
 import DetailView from './DetailView'
 import Tree from './Tree'
 import Autoflow from './Autoflow'
+import Form from './Form'
+import FormItem from './FormItem'
+import Radio from './Radio'
+import Checkbox from './Checkbox'
 
 
 const components = {
@@ -15,6 +19,10 @@ const components = {
   DetailView,
   Tree,
   Autoflow,
+  Form,
+  FormItem,
+  Radio,
+  Checkbox,
 }
 
 

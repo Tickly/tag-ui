@@ -1,7 +1,7 @@
 import TagPanel from './src/panel'
 
-// TagBox.install = Vue => {
-//   Vue.component(TagBox.name, TagBox)
-// }
+TagPanel.install = function (Vue) {
+  Vue.component(TagPanel.name, TagPanel)
+}
 
 export default TagPanel

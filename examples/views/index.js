@@ -5,6 +5,7 @@ import DetailView from './DetailView'
 import GridView from './GridView'
 import Tree from './Tree'
 import Autoflow from './Autoflow'
+import Form from './Form'
 
 export default {
   Panel,
@@ -14,4 +15,5 @@ export default {
   GridView,
   Tree,
   Autoflow,
+  Form,
 }
