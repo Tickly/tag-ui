@@ -25,6 +25,7 @@ export default {
         data: {
             type: Array,
             required: true,
+            default: [],
         },
         columns: {
             type: Array,
@@ -101,7 +102,7 @@ export default {
 
 .tag-gridview {
     overflow: scroll;
-    
+
     td {
         white-space: nowrap;
     }
