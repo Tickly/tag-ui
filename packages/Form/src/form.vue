@@ -4,8 +4,14 @@
     </form>
 </template>
 <script>
+
 // import Model from 'tag-validators'
-import Model from '../../../../tag-validators/dist/app'
+
+// prod mode 
+// import Model from '../../../../tag-validators/dist/app'
+
+// dev mode
+import Model from '../../../../tag-validators/src/main'
 
 export default {
     name: 'TagForm',

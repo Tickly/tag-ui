@@ -9,6 +9,7 @@ import Form from './Form'
 import FormItem from './FormItem'
 import Radio from './Radio'
 import Checkbox from './Checkbox'
+import CheckboxGroup from './CheckboxGroup'
 
 
 const components = {
@@ -23,6 +24,7 @@ const components = {
   FormItem,
   Radio,
   Checkbox,
+  CheckboxGroup,
 }
 
 

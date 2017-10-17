@@ -1,24 +1,21 @@
 <template>
     <div class="checkbox">
-        <label v-for="option in options" :key="option.value" class="checkbox-inline">
-            <input v-model="checked" :value="option.value" type="checkbox" @change="handleChange"> {{ option.text }}
+        <label>
+            <input type="checkbox" @change="handleChange"> {{ label }}
         </label>
     </div>
 </template>
 <script>
-import Options from '@/mixins/options.mixin'
 export default {
     name: 'TagCheckbox',
-    mixins: [Options],
-    data() {
-        return {
-            checked: [],
-        }
+    props: {
+        label: String,
+        value: Boolean,
     },
     methods: {
-        handleChange() {
-            this.$emit('input', this.checked)
+        handleChange(e) {
+            this.$emit('input', e.target.checked);
         }
-    },
+    }
 }
 </script>

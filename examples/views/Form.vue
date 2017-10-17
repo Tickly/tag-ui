@@ -2,9 +2,13 @@
   <tag-form ref="myForm" :form="form" :labels="labels" :rules="rules" @submit.prevent.native="handleSubmit">
     <tag-form-item attr="name" label="活动名称"><input v-model="form.name" class="form-control"></tag-form-item>
     <tag-form-item attr="region" label="活动区域"><input v-model="form.region" class="form-control"></tag-form-item>
-    <tag-form-item attr="delivery" label="即时配送"><input class="form-control"></tag-form-item>
+    <tag-form-item attr="number" label="数字"><input type="number" v-model="form.number" class="form-control"></tag-form-item>
+    <tag-form-item attr="date" label="时间"><input type="date" v-model="form.date" class="form-control"></tag-form-item>
+    <tag-form-item attr="delivery" label="即时配送">
+      <tag-checkbox label="是" v-model="form.delivery" />
+    </tag-form-item>
     <tag-form-item attr="type" label="活动性质">
-      <tag-checkbox v-model="form.type" :data="data_checkbox" />
+      <tag-checkbox-group v-model="form.type" :data="data_checkbox" />
     </tag-form-item>
     <tag-form-item attr="resouce" label="特殊资源">
       <tag-radio v-model="form.resouce" :data="data_radio" />
@@ -29,10 +33,14 @@ export default {
         type: [],
         resouce: null,
         desc: null,
+        number: null,
+        date: null,
       },
       labels: {},
       rules: [
-        [['name', 'region', 'type', 'resouce'], 'required']
+        [['name', 'region', 'type', 'resouce', 'number', 'date'], 'required'],
+        ['region,number', 'number'],
+        ['date', 'date'],
       ]
     };
 
