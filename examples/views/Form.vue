@@ -1,8 +1,11 @@
 <template>
   <tag-form ref="myForm" :form="form" :labels="labels" :rules="rules" @submit.prevent.native="handleSubmit">
-    <tag-form-item attr="name" label="活动名称"><input v-model="form.name" class="form-control"></tag-form-item>
-    <tag-form-item attr="region" label="活动区域"><input v-model="form.region" class="form-control"></tag-form-item>
-    <tag-form-item attr="number" label="数字"><input type="number" v-model="form.number" class="form-control"></tag-form-item>
+    <tag-form-item attr="name" label="活动名称">
+      <input v-model="form.name" class="form-control">
+    </tag-form-item>
+    <tag-form-item attr="number" label="数字">
+      <input type="number" v-model="form.number" class="form-control">
+    </tag-form-item>
     <tag-form-item attr="date" label="时间"><input type="date" v-model="form.date" class="form-control"></tag-form-item>
     <tag-form-item attr="delivery" label="即时配送">
       <tag-checkbox label="是" v-model="form.delivery" />
@@ -28,7 +31,6 @@ export default {
     var model = {
       form: {
         name: null,
-        region: null,
         delivery: false,
         type: [],
         resouce: null,
@@ -38,8 +40,11 @@ export default {
       },
       labels: {},
       rules: [
-        [['name', 'region', 'type', 'resouce', 'number', 'date'], 'required'],
-        ['region,number', 'number'],
+        [['name', 'type', 'resouce', 'number', 'date'], 'required'],
+        ['number', 'number', {
+          max: 100,
+          min: 10,
+        }],
         ['date', 'date'],
       ]
     };
