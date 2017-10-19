@@ -34,7 +34,6 @@ export default {
     },
     methods: {
         validate() {
-            this.model.form = this.form;
             return this.model.validate();
         }
     }

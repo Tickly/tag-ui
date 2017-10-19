@@ -70,7 +70,7 @@ export default {
   methods: {
     handleSubmit() {
       this.$refs.myForm.validate();
-    }
+    },
   }
 }
 </script>

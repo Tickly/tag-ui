@@ -16,26 +16,33 @@ export default {
     },
     computed: {
         form() {
-            var parent = this.$parent;
-            return parent;
+            return this.$parent;
+        },
+        model() {
+            return this.form.model;
         },
         error() {
-            var error = this.form.model.errors[this.attr];
-            if (error) return error[0].replace(this.attr, this.label)
+            var [error] = this.model.errors[this.attr] || [];
+            if (error) return error.replace(this.attr, this.label)
         },
         classBuidler() {
             var classes = [];
             if (this.error) classes.push('has-error')
             return classes;
         },
-        // _label() {
-        //     if (this.label) return this.label
-
-        //     if (this.attr && this.form) {
-        //         return this.form.labels[this.attr]
-        //     }
-
-        // },
+        value() {
+            return this.model.form[this.attr]
+        },
+    },
+    methods: {
+        validate() {
+            this.model.validate(this.attr, false);
+        },
+    },
+    watch: {
+        value(newVal) {
+            this.validate();
+        },
     }
 }
 </script>
