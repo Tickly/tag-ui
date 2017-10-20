@@ -1,12 +1,14 @@
 <template>
-  <tag-form ref="myForm" :form="form" :labels="labels" :rules="rules" @submit.prevent.native="handleSubmit">
+  <tag-form ref="myForm" :form="form" :labels="labels" @submit.prevent.native="handleSubmit">
     <tag-form-item attr="name" label="活动名称">
       <input v-model="form.name" class="form-control">
     </tag-form-item>
     <tag-form-item attr="number" label="数字">
       <input type="number" v-model="form.number" class="form-control">
     </tag-form-item>
-    <tag-form-item attr="date" label="时间"><input type="date" v-model="form.date" class="form-control"></tag-form-item>
+    <tag-form-item attr="date" label="时间">
+      <input type="date" v-model="form.date" class="form-control">
+    </tag-form-item>
     <tag-form-item attr="delivery" label="即时配送">
       <tag-checkbox label="是" v-model="form.delivery" />
     </tag-form-item>
@@ -25,7 +27,6 @@
   </tag-form>
 </template>
 <script>
-
 export default {
   data() {
     var model = {
@@ -36,19 +37,22 @@ export default {
         resouce: null,
         desc: null,
         number: null,
-        date: null,
+        date: null
       },
       labels: {},
       rules: [
-        [['name', 'type', 'resouce', 'number', 'date'], 'required'],
-        ['number', 'number', {
-          max: 100,
-          min: 10,
-        }],
-        ['date', 'date'],
+        [["name", "type", "resouce", "number", "date"], "required"],
+        [
+          "number",
+          "number",
+          {
+            max: 100,
+            min: 10
+          }
+        ],
+        ["date", "date"]
       ]
     };
-
 
     return {
       model,
@@ -56,21 +60,18 @@ export default {
       labels: model.labels,
       rules: model.rules,
       data_checkbox: {
-        0: '美食/餐厅线上活动',
-        1: '地推活动',
-        2: '线下主题活动',
-        3: '单纯品牌曝光',
+        0: "美食/餐厅线上活动",
+        1: "地推活动",
+        2: "线下主题活动",
+        3: "单纯品牌曝光"
       },
-      data_radio: [
-        '线上品牌商赞助',
-        '线下场地免费',
-      ]
-    }
+      data_radio: ["线上品牌商赞助", "线下场地免费"]
+    };
   },
   methods: {
     handleSubmit() {
       this.$refs.myForm.validate();
-    },
+    }
   }
-}
+};
 </script>

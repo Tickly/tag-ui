@@ -4,38 +4,40 @@
     </form>
 </template>
 <script>
-
 // import Model from 'tag-validators'
 
-// prod mode 
+// prod mode
 // import Model from '../../../../tag-validators/dist/app'
 
 // dev mode
-import Model from '../../../../tag-validators/src/main'
+import Model from "../../../../tag-validators/src/main";
 
 export default {
-    name: 'TagForm',
-    data() {
-        return {
-            model: null,
-        }
+  name: "TagForm",
+  data() {
+    return {
+      model: null
+    };
+  },
+  props: {
+    labels: Object,
+    rules: {
+      type: Array,
+      default: () => []
     },
-    props: {
-        labels: Object,
-        rules: [Array],
-        form: Object,
-    },
-    created() {
-        this.model = new Model({
-            form: this.form,
-            labels: this.labels,
-            rules: this.rules,
-        })
-    },
-    methods: {
-        validate() {
-            return this.model.validate();
-        }
+    form: Object
+  },
+  created() {
+    this.model = new Model({
+      form: this.form,
+      labels: this.labels,
+      rules: this.rules
+    });
+  },
+  methods: {
+    validate() {
+      return this.model.validate();
     }
-}
+  }
+};
 </script>
