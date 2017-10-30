@@ -1,5 +1,8 @@
 import Panel from './panel'
+
 import Button from './button'
+import ButtonGroup from './ButtonGroup'
+
 import GridView from './GridView'
 import Pagination from './pagination'
 import DetailView from './DetailView'
@@ -14,7 +17,10 @@ import CheckboxGroup from './CheckboxGroup'
 
 const components = {
   Panel,
+
   Button,
+  ButtonGroup,
+  
   GridView,
   Pagination,
   DetailView,

@@ -8,7 +8,7 @@
 <script>
 import _ from "lodash";
 import data from "./data.json";
-import data1 from "./data1.json";
+// import data1 from "./data1.json";
 
 export default {
   data() {
@@ -17,7 +17,7 @@ export default {
       return this.createItem(i);
     });
 
-    list = data.list;
+    list = data.list.slice(0, data.list.length / 2);
 
     // console.log(list.length);
     // console.log(data1.list.length);
@@ -28,7 +28,9 @@ export default {
   methods: {
     add() {
       // let item = this.createItem(this.list.length);
-      this.list = [].concat(data1.list);
+      let newData = data.list.slice(data.list.length / 2);
+      // this.list = this.list.concat(newData);
+      this.list = newData;
       // this.list.push(item);
       // this.$refs.autoflow.push(item);
     },
