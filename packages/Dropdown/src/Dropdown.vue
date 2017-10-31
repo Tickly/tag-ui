@@ -5,6 +5,7 @@
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
+      <slot></slot>
       <template v-for="(item,i) in formatData">
         <li :key="i" v-if="isDivider(item)" class="divider" role="separator"></li>
         <li :key="i" v-else :class="itemClass(item)">

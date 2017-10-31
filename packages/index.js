@@ -13,7 +13,9 @@ import FormItem from './FormItem'
 import Radio from './Radio'
 import Checkbox from './Checkbox'
 import CheckboxGroup from './CheckboxGroup'
+
 import Dropdown from './Dropdown'
+import DropdownItem from './DropdownItem'
 
 
 const components = {
@@ -23,6 +25,7 @@ const components = {
   ButtonGroup,
 
   Dropdown,
+  DropdownItem,
   
   GridView,
   Pagination,
