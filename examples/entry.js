@@ -1,11 +1,17 @@
 import Vue from 'vue'
 import router from './router'
 
-import 'bootstrap/dist/css/bootstrap.min.css'
+// import $ from 'jquery'
+// import 'bootstrap/dist/css/bootstrap.min.css'
+// import 'bootstrap'
 // import TagUI from '../dist/static/js/app'
 import TagUI from '../src/main'
 
-import App from './App' 
+import App from './App'
+
+global.jQuery = require('jquery');
+require('bootstrap/dist/css/bootstrap.min.css');
+require('bootstrap');
 
 
 Vue.use(TagUI)
@@ -22,4 +28,3 @@ new Vue({
     App
   }
 })
-

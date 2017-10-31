@@ -13,6 +13,7 @@ import FormItem from './FormItem'
 import Radio from './Radio'
 import Checkbox from './Checkbox'
 import CheckboxGroup from './CheckboxGroup'
+import Dropdown from './Dropdown'
 
 
 const components = {
@@ -20,6 +21,8 @@ const components = {
 
   Button,
   ButtonGroup,
+
+  Dropdown,
   
   GridView,
   Pagination,

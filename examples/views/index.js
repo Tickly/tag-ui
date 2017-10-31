@@ -3,6 +3,8 @@ import Panel from './panel'
 import Button from './button'
 import ButtonGroup from './ButtonGroup.vue'
 
+import Dropdown from './Dropdown.vue'
+
 import Pagination from './pagination'
 import DetailView from './DetailView'
 import GridView from './GridView'
@@ -14,6 +16,8 @@ export default {
   Panel,
   Button,
   ButtonGroup,
+  
+  Dropdown,
   
   Pagination,
   DetailView,
