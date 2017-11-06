@@ -48,6 +48,9 @@ var webpackConfig = merge(baseWebpackConfig, {
     'tag-formatter': {
       commonjs2: 'tag-formatter'
     },
+    'tag-validators': {
+      commonjs2: 'tag-validators'
+    },
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html

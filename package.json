@@ -24,7 +24,7 @@
     "bootstrap": "^3.3.7",
     "moment": "^2.18.1",
     "tag-formatter": "^1.0.1",
-    "tag-validators": "^0.1.1",
+    "tag-validators": "^0.1.12",
     "vue": "^2.4.1"
   },
   "devDependencies": {
@@ -63,7 +63,6 @@
     "rimraf": "^2.6.0",
     "semver": "^5.3.0",
     "shelljs": "^0.7.6",
-    "tag-validators": "^0.1.6",
     "url-loader": "^0.5.9",
     "vue-loader": "^12.2.2",
     "vue-router": "^2.7.0",
