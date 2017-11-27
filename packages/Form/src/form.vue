@@ -1,10 +1,12 @@
 <template>
-    <form class="form-horizontal">
-        <slot></slot>
-    </form>
+  <form class="form-horizontal">
+    <slot></slot>
+  </form>
 </template>
 <script>
-import Model from 'tag-validators'
+import Validator from 'tag-validators'
+
+const Model = Validator.Model;
 
 // prod mode
 // import Model from '../../../../tag-validators/dist/app'

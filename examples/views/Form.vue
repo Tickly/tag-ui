@@ -1,10 +1,10 @@
 <template>
-  <tag-form ref="myForm" :form="form" :labels="labels" @submit.prevent.native="handleSubmit">
+  <tag-form ref="myForm" :form="form" :rules="rules" :labels="labels" @submit.prevent.native="handleSubmit">
     <tag-form-item attr="name" label="活动名称">
       <input v-model="form.name" class="form-control">
     </tag-form-item>
     <tag-form-item attr="number" label="数字">
-      <input type="number" v-model="form.number" class="form-control">
+      <input type="number" v-model.number="form.number" class="form-control">
     </tag-form-item>
     <tag-form-item attr="date" label="时间">
       <input type="date" v-model="form.date" class="form-control">
@@ -41,7 +41,10 @@ export default {
       },
       labels: {},
       rules: [
-        [["name", "type", "resouce", "number", "date"], "required"],
+        [
+          'required',
+          ["name", "type", "resouce", "number", "date"]
+        ],
         [
           "number",
           "number",

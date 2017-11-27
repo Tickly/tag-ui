@@ -16,7 +16,7 @@
             <h3>带操作的列</h3>
             <div>
                 <tag-table :options="options3" :data="options3.data" :columns="options3.columns">
-                    <template slot="col-action" scope="scope">
+                    <template slot="col-action" slot-scope="scope">
                         <button class="btn btn-default" @click="click1(scope)">删除</button>
                     </template>
                 </tag-table>
