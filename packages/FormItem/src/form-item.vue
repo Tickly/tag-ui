@@ -1,6 +1,6 @@
 <template>
     <div class="form-group" :class="classBuidler">
-        <label class="control-label col-sm-2">{{ label }}</label>
+        <label class="control-label col-sm-2">{{ _label }}</label>
         <div class="col-sm-10">
             <slot></slot>
             <span v-if="error" class="help-block">{{ error }}</span>
@@ -15,6 +15,10 @@ export default {
         attr: String,
     },
     computed: {
+        _label() {
+            if (this.label) return this.label;
+            return this.form.labels[this.attr];
+        },
         form() {
             return this.$parent;
         },
@@ -23,7 +27,7 @@ export default {
         },
         error() {
             var [error] = this.model.errors[this.attr] || [];
-            if (error) return error.replace(this.attr, this.label)
+            if (error) return error;
         },
         classBuidler() {
             var classes = [];

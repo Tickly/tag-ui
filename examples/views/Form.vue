@@ -1,24 +1,24 @@
 <template>
   <tag-form ref="myForm" :form="form" :rules="rules" :labels="labels" @submit.prevent.native="handleSubmit">
-    <tag-form-item attr="name" label="活动名称">
+    <tag-form-item attr="name">
       <input v-model="form.name" class="form-control">
     </tag-form-item>
-    <tag-form-item attr="number" label="数字">
+    <tag-form-item attr="number">
       <input type="number" v-model.number="form.number" class="form-control">
     </tag-form-item>
-    <tag-form-item attr="date" label="时间">
+    <tag-form-item attr="date">
       <input type="date" v-model="form.date" class="form-control">
     </tag-form-item>
-    <tag-form-item attr="delivery" label="即时配送">
+    <tag-form-item attr="delivery">
       <tag-checkbox label="是" v-model="form.delivery" />
     </tag-form-item>
-    <tag-form-item attr="type" label="活动性质">
+    <tag-form-item attr="type">
       <tag-checkbox-group v-model="form.type" :data="data_checkbox" />
     </tag-form-item>
-    <tag-form-item attr="resouce" label="特殊资源">
+    <tag-form-item attr="resouce">
       <tag-radio v-model="form.resouce" :data="data_radio" />
     </tag-form-item>
-    <tag-form-item attr="desc" label="活动形式">
+    <tag-form-item attr="desc">
       <textarea class="form-control" />
     </tag-form-item>
     <tag-form-item>
@@ -39,21 +39,29 @@ export default {
         number: null,
         date: null
       },
-      labels: {},
+      labels: {
+        name: '活动名称',
+        number: '数字',
+        date: '时间',
+        delivery: '即时配送',
+        type: '活动性质',
+        resouce: '特殊资源',
+        desc: '活动形式',
+      },
       rules: [
         [
           'required',
-          ["name", "type", "resouce", "number", "date"]
+          ['name', 'type', 'resouce', 'number', 'date']
         ],
         [
-          "number",
-          "number",
+          'number',
+          'number',
           {
             max: 100,
             min: 10
           }
         ],
-        ["date", "date"]
+        ['date', 'date']
       ]
     };
 
@@ -63,12 +71,12 @@ export default {
       labels: model.labels,
       rules: model.rules,
       data_checkbox: {
-        0: "美食/餐厅线上活动",
-        1: "地推活动",
-        2: "线下主题活动",
-        3: "单纯品牌曝光"
+        0: '美食/餐厅线上活动',
+        1: '地推活动',
+        2: '线下主题活动',
+        3: '单纯品牌曝光'
       },
-      data_radio: ["线上品牌商赞助", "线下场地免费"]
+      data_radio: ['线上品牌商赞助', '线下场地免费']
     };
   },
   methods: {
