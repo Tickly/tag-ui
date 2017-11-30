@@ -1,9 +1,9 @@
 <template>
-    <div class="form-group" :class="classBuidler">
-        <label class="control-label col-sm-2">{{ _label }}</label>
-        <div class="col-sm-10">
+    <div class="form-group row" :class="classBuidler">
+        <label class="control-label" :class="classBuilderLabel">{{ _label }}</label>
+        <div class="col">
             <slot></slot>
-            <span v-if="error" class="help-block">{{ error }}</span>
+            <span v-if="error" class="invalid-feedback">{{ error }}</span>
         </div>
     </div>
 </template>
@@ -13,6 +13,7 @@ export default {
     props: {
         label: String,
         attr: String,
+        labelCol: [String, Number],
     },
     computed: {
         _label() {
@@ -32,6 +33,15 @@ export default {
         classBuidler() {
             var classes = [];
             if (this.error) classes.push('has-error')
+            // classes.push('col-' + this.labelCol);
+            return classes;
+        },
+        _labelCol() {
+            return this.labelCol || this.form.labelCol;
+        },
+        classBuilderLabel() {
+            var classes = [];
+            classes.push('col-' + this._labelCol);
             return classes;
         },
         value() {
@@ -50,3 +60,20 @@ export default {
     }
 }
 </script>
+<style lang="scss">
+.has-error {
+  .form-control {
+    border-color: #dc3545;
+  }
+
+  .radio,
+  .checkbox,
+  .control-label {
+    color: #a94442;
+  }
+
+  .invalid-feedback {
+    display: block;
+  }
+}
+</style>

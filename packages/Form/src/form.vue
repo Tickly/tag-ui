@@ -1,5 +1,5 @@
 <template>
-  <form class="form-horizontal">
+  <form class="form-horizontal" :class="classBuilder">
     <slot></slot>
   </form>
 </template>
@@ -18,7 +18,8 @@ export default {
   name: "TagForm",
   data() {
     return {
-      model: null
+      model: null,
+      hasError: false,
     };
   },
   props: {
@@ -27,7 +28,22 @@ export default {
       type: Array,
       default: () => []
     },
-    form: Object
+    form: Object,
+    labelCol: {
+      type: [String, Number],
+      default: 2,
+    },
+  },
+  computed: {
+    classBuilder() {
+      var classes = [];
+      // if (this.model) {
+      //   if (this.model.hasErrors()) {
+      //     classes.push('was-validated');
+      //   }
+      // }
+      return classes;
+    },
   },
   created() {
     this.model = new Model({

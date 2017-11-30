@@ -9,7 +9,7 @@ export default {
     props: {
         type: {
             type: String,
-            default: 'default',
+            default: 'info',
         },
         size: String,
         active: Boolean,

@@ -1,5 +1,5 @@
 <template>
-  <tag-form ref="myForm" :form="form" :rules="rules" :labels="labels" @submit.prevent.native="handleSubmit">
+  <tag-form labelCol="2" ref="myForm" :form="form" :rules="rules" :labels="labels" @submit.prevent.native="handleSubmit">
     <tag-form-item attr="name">
       <input v-model="form.name" class="form-control">
     </tag-form-item>
@@ -76,9 +76,10 @@ export default {
         2: '线下主题活动',
         3: '单纯品牌曝光'
       },
-      data_radio: ['线上品牌商赞助', '线下场地免费']
+      data_radio: ['线上品牌商赞助', '线下场地免费'],
     };
   },
+
   methods: {
     handleSubmit() {
       this.$refs.myForm.validate();
