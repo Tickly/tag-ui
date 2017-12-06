@@ -2,8 +2,8 @@
   <div id="app" class="container">
     <div class="row">
       <div class="col-sm-3">
-        <ul>
-          <li v-for="(component,key) in examples" :key="key">
+        <ul class="list-group">
+          <li v-for="(component,key) in examples" :key="key" class="list-group-item">
             <a :href="'/'+key">{{key}}</a>
           </li>
         </ul>

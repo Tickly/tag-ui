@@ -1,10 +1,10 @@
-import Panel from './panel'
+import Panel from './Panel'
 
-import Button from './button'
+import Button from './Button'
 import ButtonGroup from './ButtonGroup'
 
 import GridView from './GridView'
-import Pagination from './pagination'
+import Pagination from './Pagination'
 import DetailView from './DetailView'
 import Tree from './Tree'
 import Autoflow from './Autoflow'
@@ -16,6 +16,8 @@ import CheckboxGroup from './CheckboxGroup'
 
 import Dropdown from './Dropdown'
 import DropdownItem from './DropdownItem'
+
+import Navbar from './Navbar'
 
 
 const components = {
@@ -37,6 +39,8 @@ const components = {
   Radio,
   Checkbox,
   CheckboxGroup,
+
+  Navbar,
 }
 
 

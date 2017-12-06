@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "accounting": "^0.4.1",
-    "bootstrap": "^4.0.0-beta.2",
+    "bootstrap": "^3.3.7",
     "moment": "^2.18.1",
     "tag-formatter": "^1.0.1",
     "tag-validators": "^0.1.12",

@@ -12,17 +12,21 @@ import Tree from './Tree'
 import Autoflow from './Autoflow'
 import Form from './Form'
 
+import Navbar from './Navbar'
+
 export default {
   Panel,
   Button,
   ButtonGroup,
-  
+
   Dropdown,
-  
+
   Pagination,
   DetailView,
   GridView,
   Tree,
   Autoflow,
   Form,
+
+  Navbar,
 }
