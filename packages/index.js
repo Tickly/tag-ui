@@ -18,6 +18,8 @@ import Dropdown from './Dropdown'
 import DropdownItem from './DropdownItem'
 
 import Navbar from './Navbar'
+import Menu from './Menu'
+import MenuItem from './MenuItem'
 
 
 const components = {
@@ -28,7 +30,7 @@ const components = {
 
   Dropdown,
   DropdownItem,
-  
+
   GridView,
   Pagination,
   DetailView,
@@ -41,6 +43,8 @@ const components = {
   CheckboxGroup,
 
   Navbar,
+  Menu,
+  MenuItem,
 }
 
 

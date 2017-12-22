@@ -3,8 +3,8 @@ import router from './router'
 
 import './bootstrap'
 
-// import TagUI from '../dist/static/js/app'
-import TagUI from '../src/main'
+import TagUI from '../dist'
+// import TagUI from '../src'
 
 import App from './App'
 

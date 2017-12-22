@@ -4,9 +4,8 @@
   </form>
 </template>
 <script>
-import Validator from 'tag-validators'
+import { Validator, Model } from 'tag-validators'
 
-const Model = Validator.Model;
 
 // prod mode
 // import Model from '../../../../tag-validators/dist/app'

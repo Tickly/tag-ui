@@ -20,12 +20,12 @@ export default {
     props: {
         options: {
             type: Object,
-            default: {},
+            default: () => { },
         },
         data: {
             type: Array,
             required: true,
-            default: [],
+            default: () => [],
         },
         columns: {
             type: Array,
@@ -93,18 +93,17 @@ export default {
 </script>
 <style lang="less">
 .table {
-    border: 1px solid #ddd;
-    .vAlign-middle {
-        vertical-align: middle;
-    }
+  border: 1px solid #ddd;
+  .vAlign-middle {
+    vertical-align: middle;
+  }
 }
 
-
 .tag-gridview {
-    overflow: scroll;
+  overflow: scroll;
 
-    td {
-        white-space: nowrap;
-    }
+  td {
+    white-space: nowrap;
+  }
 }
 </style>

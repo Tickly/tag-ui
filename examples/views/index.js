@@ -13,6 +13,7 @@ import Autoflow from './Autoflow'
 import Form from './Form'
 
 import Navbar from './Navbar'
+import Menu from './Menu'
 
 export default {
   Panel,
@@ -29,4 +30,5 @@ export default {
   Form,
 
   Navbar,
+  Menu,
 }

@@ -1,6 +1,6 @@
 <template>
     <nav class="navbar navbar-default">
-        <div class="container-fluid">
+        <div :class="classBuilderContainer">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -27,7 +27,19 @@ export default {
         brand: {
             type: String,
             default: 'Brand',
-        }
+        },
+        fluid: {
+            type: Boolean,
+            default: true,
+        },
     },
+    computed: {
+        classBuilderContainer() {
+            var classes = [];
+            if (this.fluid) classes.push('container-fluid');
+            else classes.push('container');
+            return classes;
+        }
+    }
 }
 </script>
