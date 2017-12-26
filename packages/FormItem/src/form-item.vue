@@ -1,7 +1,7 @@
 <template>
-    <div class="form-group row" :class="classBuidler">
+    <div class="form-group" :class="classBuidler">
         <label class="control-label" :class="classBuilderLabel">{{ _label }}</label>
-        <div class="col">
+        <div :class="classBuidlerControl">
             <slot></slot>
             <span v-if="error" class="invalid-feedback">{{ error }}</span>
         </div>
@@ -41,7 +41,12 @@ export default {
         },
         classBuilderLabel() {
             var classes = [];
-            classes.push('col-' + this._labelCol);
+            classes.push('col-sm-' + this._labelCol);
+            return classes;
+        },
+        classBuidlerControl() {
+            var classes = [];
+            classes.push('col-sm-' + (12 - this._labelCol));
             return classes;
         },
         value() {
