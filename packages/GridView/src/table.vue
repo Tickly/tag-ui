@@ -18,10 +18,6 @@ const ColumnClasses = {
 export default {
     name: 'TagTable',
     props: {
-        options: {
-            type: Object,
-            default: () => { },
-        },
         data: {
             type: Array,
             required: true,
@@ -30,6 +26,10 @@ export default {
         columns: {
             type: Array,
             required: true,
+        },
+        labels: {
+            type: Object,
+            default: () => ({}),
         },
         showPageSummary: Boolean,
         hover: Boolean,
@@ -53,23 +53,26 @@ export default {
         initColumns() {
             if (!this.columns) return;
 
-            this.columns_array = this.columns.map(column => {
-                let type = typeof column;
-                if ('string' === type) {
-                    return this.createDataColumn(column)
-                } else if ('object' === type) {
-                    if (column.type) {
-                        if (ColumnClasses[column.type]) {
-                            return new ColumnClasses[column.type](column);
+            this.columns_array = this.columns
+                .map(column => {
+                    let type = typeof column;
+                    if ('string' === type) {
+                        return this.createDataColumn(column)
+                    } else if ('object' === type) {
+                        if (column.type) {
+                            if (ColumnClasses[column.type]) {
+                                return new ColumnClasses[column.type](column);
+                            }
                         }
                     }
-                }
-                return new DataColumn(column);
-            })
+                    return new DataColumn(column);
+                })
         },
         createDataColumn(text) {
             var [attribute, label] = text.split(':');
-            if (!label) label = attribute;
+            if (!label) {
+                label = this.labels[attribute] || attribute;
+            }
             return new DataColumn({
                 attribute,
                 label,
@@ -77,7 +80,6 @@ export default {
         }
     },
     render(h) {
-        // console.log(this.$parent);
         return (new GridView({
             showPageSummary: this.showPageSummary,
             hover: this.hover,

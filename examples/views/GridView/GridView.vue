@@ -3,13 +3,13 @@
         <section>
             <h3>基础表格</h3>
             <div>
-                <tag-table :options="options1" :data="options1.data" :columns="options1.columns" :bordered="true"></tag-table>
+                <tag-table :data="data" :columns="opt1.columns" bordered />
             </div>
         </section>
         <section>
             <h3>列的类型，统计，数据的格式化，</h3>
             <div>
-                <tag-table :options="options2" :data="options2.data" :columns="options2.columns" :showPageSummary="true" :striped="true" :bordered="true"></tag-table>
+                <tag-table :data="data" :columns="options2.columns" showPageSummary striped bordered />
             </div>
         </section>
         <section>
@@ -22,47 +22,22 @@
                 </tag-table>
             </div>
         </section>
+        <section>
+            <h3>labels</h3>
+            <div>
+                <tag-table :data="data" :columns="opt4.columns" :labels="opt4.labels" />
+            </div>
+        </section>
     </div>
 </template>
 <script>
-const data = [
-    {
-        date: '2016-05-02 12:08:34',
-        name: '令狐冲',
-        address: '上海市普陀区金沙江路 1518 弄',
-        age: 25,
-        money: 1000000,
-    },
-    {
-        date: '2016-05-04 09:09:09',
-        name: '赵云',
-        address: '上海市普陀区金沙江路 1517 弄',
-        age: 31,
-        money: 842934,
-    },
-    {
-        date: '2016-05-01 00:00:00',
-        name: '狙击手',
-        address: '上海市普陀区金沙江路 1519 弄',
-        age: 28,
-        money: 492883,
-    },
-    {
-        date: '2016-05-03 10:30:00',
-        name: '我是警察',
-        address: '上海市普陀区金沙江路 1516 弄',
-        age: 27,
-        money: 10000001,
-    }
-];
+import data from './data'
+
 export default {
     data() {
         return {
-            options1: {
-                // bordered: true,
-                hover: true,
-                responsive: true,
-                data,
+            data,
+            opt1: {
                 columns: [
                     { type: 'serial' },
                     'date:日期',
@@ -158,6 +133,14 @@ export default {
                         },
                     },
                 ]
+            },
+            opt4: {
+                columns: [
+                    'name',
+                ],
+                labels: {
+                    name: '姓名',
+                },
             }
         }
     },
