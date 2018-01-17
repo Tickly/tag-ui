@@ -8,11 +8,13 @@ import Pagination from './Pagination'
 import DetailView from './DetailView'
 import Tree from './Tree'
 import Autoflow from './Autoflow'
+
 import Form from './Form'
 import FormItem from './FormItem'
 import Radio from './Radio'
 import Checkbox from './Checkbox'
 import CheckboxGroup from './CheckboxGroup'
+import Select from './Select'
 
 import Dropdown from './Dropdown'
 import DropdownItem from './DropdownItem'
@@ -20,6 +22,8 @@ import DropdownItem from './DropdownItem'
 import Navbar from './Navbar'
 import Menu from './Menu'
 import MenuItem from './MenuItem'
+
+import Editable from './Editable'
 
 
 const components = {
@@ -36,15 +40,19 @@ const components = {
   DetailView,
   Tree,
   Autoflow,
+
   Form,
   FormItem,
   Radio,
   Checkbox,
   CheckboxGroup,
+  Select,
 
   Navbar,
   Menu,
   MenuItem,
+
+  Editable,
 }
 
 

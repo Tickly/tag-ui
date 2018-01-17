@@ -120,6 +120,10 @@ export default {
 
                     'address',
                     {
+                        type: 'template',
+                        slot: 'col-action',
+                    },
+                    {
                         label: '操作',
                         type: 'template',
                         template(h, { row }) {
@@ -136,10 +140,14 @@ export default {
             },
             opt4: {
                 columns: [
+                    '#',
                     'name',
+                    'age',
+                    'address',
                 ],
                 labels: {
                     name: '姓名',
+                    age: '年龄',
                 },
             }
         }

@@ -22,12 +22,18 @@ export default {
     };
   },
   props: {
-    labels: Object,
+    form: {
+      type:Object,
+      default:()=>({}),
+    },
+    labels: {
+      type:Object,
+      default:()=>({}),
+    },
     rules: {
       type: Array,
       default: () => []
     },
-    form: Object,
     labelCol: {
       type: [String, Number],
       default: 2,

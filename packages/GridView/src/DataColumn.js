@@ -25,3 +25,15 @@ export default class DataColumn extends Column {
   }
 
 }
+
+
+DataColumn.parse = function (str) {
+  var [attribute, label] = str.split(':');
+  // if (!label) {
+  //   label = this.labels[attribute] || attribute;
+  // }
+  return {
+    attribute,
+    label,
+  }
+}

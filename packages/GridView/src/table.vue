@@ -55,29 +55,21 @@ export default {
 
             this.columns_array = this.columns
                 .map(column => {
-                    let type = typeof column;
-                    if ('string' === type) {
-                        return this.createDataColumn(column)
-                    } else if ('object' === type) {
-                        if (column.type) {
-                            if (ColumnClasses[column.type]) {
-                                return new ColumnClasses[column.type](column);
+                    if ('string' === typeof column) {
+                        if ('#' === column) {
+                            column = {
+                                type: 'serial'
                             }
+                        } else {
+                            column = DataColumn.parse(column)
                         }
                     }
-                    return new DataColumn(column);
+                    column.type = column.type || 'data';
+
+                    return new ColumnClasses[column.type](column);
                 })
+
         },
-        createDataColumn(text) {
-            var [attribute, label] = text.split(':');
-            if (!label) {
-                label = this.labels[attribute] || attribute;
-            }
-            return new DataColumn({
-                attribute,
-                label,
-            })
-        }
     },
     render(h) {
         return (new GridView({

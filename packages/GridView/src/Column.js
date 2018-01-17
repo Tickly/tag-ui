@@ -7,7 +7,7 @@ export default class Column {
     label,
     summary = false,
     width,
-  }) {
+  } = {}) {
 
     this.attribute = attribute;
     this.label = label;
@@ -24,7 +24,7 @@ export default class Column {
     this.column_values = [];
   }
 
-  // 渲染一个th
+  // 渲染一个列标题th
   renderHeaderCell(h, column) {
     return h('th', {
       attrs: {},
@@ -34,6 +34,7 @@ export default class Column {
       }
     })
   }
+  // 渲染列标题内容
   renderHeaderCellContent() {
     return this.label || this.attribute;
   }
