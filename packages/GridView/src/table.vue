@@ -66,6 +66,14 @@ export default {
                     }
                     column.type = column.type || 'data';
 
+                    // 如果设置了labels
+                    if (this.labels) {
+                        // 如果这个列没有设置label
+                        if (!column.label) {
+                            column.label = this.labels[column.attribute];
+                        }
+                    }
+
                     return new ColumnClasses[column.type](column);
                 })
 
