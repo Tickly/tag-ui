@@ -17,8 +17,9 @@ export default {
     },
     computed: {
         _label() {
-            if (this.label) return this.label;
-            return this.form.labels[this.attr];
+            return this.label
+                || this.form.labels[this.attr]
+                || this.attr;
         },
         form() {
             return this.$parent;
