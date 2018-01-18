@@ -18,6 +18,7 @@
         <div class="panel-footer" v-if="$slots.footer">
             <slot name="footer"></slot>
         </div>
+        <slot name="append"></slot>
     </div>
 </template>
 <script>
