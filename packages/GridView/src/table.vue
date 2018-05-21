@@ -27,15 +27,13 @@ export default {
             type: Array,
             required: true,
         },
-        labels: {
-            type: Object,
-            default: () => ({}),
-        },
+        labels: Object,
         showPageSummary: Boolean,
         hover: Boolean,
         bordered: Boolean,
         striped: Boolean,
         responsive: Boolean,
+        model: Function,
     },
     data() {
         return {
@@ -53,6 +51,12 @@ export default {
         initColumns() {
             if (!this.columns) return;
 
+            let model = new this.model();
+
+
+            let labels = this.labels || model.labels;
+
+
             this.columns_array = this.columns
                 .map(column => {
                     if ('string' === typeof column) {
@@ -66,12 +70,11 @@ export default {
                     }
                     column.type = column.type || 'data';
 
-                    // 如果设置了labels
-                    if (this.labels) {
-                        // 如果这个列没有设置label
-                        if (!column.label) {
-                            column.label = this.labels[column.attribute];
-                        }
+
+
+                    // 如果这个列没有设置label
+                    if (!column.label) {
+                        column.label = labels[column.attribute];
                     }
 
                     return new ColumnClasses[column.type](column);
@@ -105,7 +108,7 @@ export default {
   overflow: scroll;
 
   td {
-    white-space: nowrap;
+    // white-space: nowrap;
   }
 }
 </style>

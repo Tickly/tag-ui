@@ -18,7 +18,7 @@ export default {
     computed: {
         _label() {
             return this.label
-                || this.form.labels[this.attr]
+                || this.model.labels[this.attr]
                 || this.attr;
         },
         form() {
@@ -51,7 +51,7 @@ export default {
             return classes;
         },
         value() {
-            return this.model.form[this.attr]
+            return this.model[this.attr]
         },
     },
     methods: {

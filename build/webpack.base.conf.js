@@ -1,7 +1,9 @@
 var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
-var vueLoaderConfig = require('./vue-loader.conf')
+
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
@@ -27,9 +29,24 @@ module.exports = {
   module: {
     rules: [{
         test: /\.vue$/,
-        loader: 'vue-loader',
-        options: vueLoaderConfig,
+        use: 'vue-loader',
         exclude: /node_modules/
+      },
+      {
+        test: /\.less$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'less-loader',
+        ],
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
       },
       {
         test: /\.js$/,
@@ -61,5 +78,8 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new VueLoaderPlugin(),
+  ]
 }

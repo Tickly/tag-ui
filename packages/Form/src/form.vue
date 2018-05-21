@@ -4,35 +4,18 @@
   </form>
 </template>
 <script>
-import { Validator, Model } from 'tag-validators'
-
-
-// prod mode
-// import Model from '../../../../tag-validators/dist/app'
-
-// dev mode
-// import Model from "../../../../tag-validators/src/main";
 
 export default {
   name: "TagForm",
   data() {
     return {
-      model: null,
       hasError: false,
     };
   },
   props: {
-    form: {
-      type:Object,
-      default:()=>({}),
-    },
-    labels: {
-      type:Object,
-      default:()=>({}),
-    },
-    rules: {
-      type: Array,
-      default: () => []
+    model: {
+      type: Object,
+      default: () => ({}),
     },
     labelCol: {
       type: [String, Number],
@@ -51,11 +34,7 @@ export default {
     },
   },
   created() {
-    this.model = new Model({
-      form: this.form,
-      labels: this.labels,
-      rules: this.rules
-    });
+
   },
   methods: {
     validate() {
