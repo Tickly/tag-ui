@@ -9,12 +9,7 @@ export default {
 }
 </script>
 <style lang="scss">
-a {
-  color: inherit;
-}
-
 .tag-menu {
-
   color: white;
   list-style: none;
   background-color: black;

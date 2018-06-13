@@ -30,6 +30,7 @@ export default {
   > a {
     display: block;
     padding: 1em 2em;
+    color: inherit;
   }
 
   .menu-icon {
