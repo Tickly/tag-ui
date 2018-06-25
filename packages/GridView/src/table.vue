@@ -51,10 +51,12 @@ export default {
         initColumns() {
             if (!this.columns) return;
 
-            let model = new this.model();
+            let labels = this.labels
 
-
-            let labels = this.labels || model.labels;
+            // if (this.model) {
+            //     let model = new this.model();
+            //     labels = model.labels;
+            // }
 
 
             this.columns_array = this.columns
