@@ -27,7 +27,10 @@ export default {
             type: Array,
             required: true,
         },
-        labels: Object,
+        labels: {
+            type: Object,
+            default: () => ({}),
+        },
         showPageSummary: Boolean,
         hover: Boolean,
         bordered: Boolean,
