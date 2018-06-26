@@ -9,7 +9,7 @@ function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 
-module.exports = {
+const baseCconfig = {
   entry: {
     index: './src/index.js'
   },
@@ -31,6 +31,13 @@ module.exports = {
         test: /\.vue$/,
         use: 'vue-loader',
         exclude: /node_modules/
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
       },
       {
         test: /\.less$/,
@@ -83,3 +90,7 @@ module.exports = {
     new VueLoaderPlugin(),
   ]
 }
+
+
+
+module.exports = baseCconfig

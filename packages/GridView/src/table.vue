@@ -112,8 +112,8 @@ export default {
 .tag-gridview {
   overflow: scroll;
 
-  td {
-    // white-space: nowrap;
-  }
+  //   td {
+  // white-space: nowrap;
+  //   }
 }
 </style>
