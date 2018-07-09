@@ -13,6 +13,11 @@ export default {
     };
   },
   props: {
+    form: Object,
+    labels: {
+      default: () => ({}),
+    },
+    rules: Array,
     model: {
       type: Object,
       default: () => ({}),

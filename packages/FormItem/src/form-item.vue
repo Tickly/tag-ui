@@ -16,9 +16,14 @@ export default {
         labelCol: [String, Number],
     },
     computed: {
+
+        labels() {
+            return this.form.labels;
+        },
+
         _label() {
             return this.label
-                || this.model.labels[this.attr]
+                || this.labels[this.attr]
                 || this.attr;
         },
         form() {
@@ -28,7 +33,11 @@ export default {
             return this.form.model;
         },
         error() {
-            var [error] = this.model.errors[this.attr] || [];
+            let error;
+            if (this.model.errors) {
+                [error] = this.model.errors[this.attr] || [];
+            }
+
             if (error) return error;
         },
         classBuidler() {
