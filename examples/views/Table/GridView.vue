@@ -3,7 +3,9 @@
         <section>
             <h3>基础表格</h3>
             <div>
-                <tag-table :data="data" :columns="opt1.columns" bordered />
+                <tag-table :data="data" :columns="opt1.columns" bordered>
+                    <tag-table-column type="serial"/>
+                </tag-table>
             </div>
         </section>
         <section>

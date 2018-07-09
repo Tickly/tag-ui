@@ -86,19 +86,26 @@ export default {
                 })
 
         },
+        appendColumn() {
+            this.columns_array.push(new ColumnClasses.data(DataColumn.parse('name')))
+        }
     },
     render(h) {
-        return (new GridView({
-            showPageSummary: this.showPageSummary,
-            hover: this.hover,
-            bordered: this.bordered,
-            striped: this.striped,
-            responsive: this.responsive,
-        }, this.$parent)).render(h, {
-            data: this.data,
-            columns: this.columns_array,
-        })
-    }
+        return h('div', [
+
+            (new GridView({
+                showPageSummary: this.showPageSummary,
+                hover: this.hover,
+                bordered: this.bordered,
+                striped: this.striped,
+                responsive: this.responsive,
+            }, this.$parent)).render(h, {
+                data: this.data,
+                columns: this.columns_array,
+            }),
+            this.$slots.default,
+        ])
+    },
 }
 </script>
 <style lang="less">

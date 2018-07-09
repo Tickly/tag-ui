@@ -30,10 +30,12 @@ export default class GridView {
     return h('div', {
       // class: 'table-responsive'
       class: this.renderWrapClass()
-    }, [this.renderTable(h, {
-      data,
-      columns
-    })])
+    }, [
+      this.renderTable(h, {
+        data,
+        columns
+      }),
+    ])
   }
 
   renderTable(h, {

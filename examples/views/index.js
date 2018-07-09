@@ -7,7 +7,7 @@ import Dropdown from './Dropdown.vue'
 
 import Pagination from './pagination'
 import DetailView from './DetailView'
-import GridView from './GridView'
+import Table from './Table'
 import Tree from './Tree'
 import Autoflow from './Autoflow'
 
@@ -29,7 +29,7 @@ export default {
 
   Pagination,
   DetailView,
-  GridView,
+  Table,
   Tree,
   Autoflow,
 

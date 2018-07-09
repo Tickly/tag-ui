@@ -1,7 +1,7 @@
 import TagEditable from './src/editable'
 
 TagEditable.install = Vue =>{
-  Vue.components(TagEditable.name, TagEditable);
+  Vue.component(TagEditable.name, TagEditable);
 }
 
 export default TagEditable
