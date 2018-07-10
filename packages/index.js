@@ -3,7 +3,9 @@ import Panel from './Panel'
 import Button from './Button'
 import ButtonGroup from './ButtonGroup'
 
-import GridView from './GridView'
+import Table from './Table'
+
+
 import Pagination from './Pagination'
 import DetailView from './DetailView'
 import Tree from './Tree'
@@ -35,7 +37,7 @@ const components = {
   Dropdown,
   DropdownItem,
 
-  GridView,
+  Table,
   Pagination,
   DetailView,
   Tree,

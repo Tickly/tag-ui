@@ -10,7 +10,12 @@ const install = function (Vue) {
   for (var key in components) {
     if (components.hasOwnProperty(key)) {
       var component = components[key];
-      Vue.component(component.name, component);
+
+      if (component.install) {
+        Vue.use(component);
+      } else {
+        Vue.component(component.name, component);
+      }
     }
   }
 

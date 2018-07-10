@@ -5,15 +5,14 @@ var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const path = require('path')
 
 
 
 var webpackConfig = merge(baseWebpackConfig, {
-  entry:{
-    index:'./examples/entry'
-  },
-  module: {
-    rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap })
+  mode: 'development',
+  entry: {
+    index: './examples/entry'
   },
   // cheap-module-eval-source-map is faster for development
   // devtool: 'cheap-module-eval-source-map',
@@ -32,12 +31,20 @@ var webpackConfig = merge(baseWebpackConfig, {
       inject: true
     }),
     new FriendlyErrorsPlugin()
-  ]
+  ],
+
+  devServer: {
+    host: '0.0.0.0',
+    port: 8000,
+    hotOnly: true,
+    historyApiFallback: true,
+    contentBase: path.join(__dirname, '..')
+  }
 })
 
 // add hot-reload related code to entry chunks
-Object.keys(webpackConfig.entry).forEach(function (name) {
-  webpackConfig.entry[name] = ['./build/dev-client'].concat(webpackConfig.entry[name])
-})
+// Object.keys(webpackConfig.entry).forEach(function (name) {
+//   webpackConfig.entry[name] = ['./build/dev-client'].concat(webpackConfig.entry[name])
+// })
 
 module.exports = webpackConfig;
