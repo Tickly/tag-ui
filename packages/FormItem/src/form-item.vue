@@ -16,26 +16,23 @@ export default {
         labelCol: [String, Number],
     },
     computed: {
-
-        labels() {
-            return this.form.labels;
+        $form() {
+            return this.$parent;
         },
+        labels() {
+            return this.$form.labels;
+        },
+
 
         _label() {
             return this.label
                 || this.labels[this.attr]
                 || this.attr;
         },
-        form() {
-            return this.$parent;
-        },
-        model() {
-            return this.form.model;
-        },
         error() {
             let error;
-            if (this.model.errors) {
-                [error] = this.model.errors[this.attr] || [];
+            if (this.$form.errors) {
+                [error] = this.$form.errors[this.attr] || [];
             }
 
             if (error) return error;
@@ -47,7 +44,7 @@ export default {
             return classes;
         },
         _labelCol() {
-            return this.labelCol || this.form.labelCol;
+            return this.labelCol || this.$form.labelCol;
         },
         classBuilderLabel() {
             var classes = [];
@@ -60,12 +57,12 @@ export default {
             return classes;
         },
         value() {
-            return this.model[this.attr]
+            return this.$form.form[this.attr]
         },
     },
     methods: {
         validate() {
-            this.model.validate(this.attr, false);
+            // this.model.validate(this.attr, false);
         },
     },
     watch: {

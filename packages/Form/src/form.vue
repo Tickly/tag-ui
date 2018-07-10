@@ -4,24 +4,30 @@
   </form>
 </template>
 <script>
+import { Validator } from 'tag-validators'
 
 export default {
-  name: "TagForm",
+  name: 'TagForm',
   data() {
     return {
-      hasError: false,
+      errors: null,
     };
   },
   props: {
-    form: Object,
-    labels: {
-      default: () => ({}),
-    },
-    rules: Array,
-    model: {
+    form: {
       type: Object,
       default: () => ({}),
     },
+    labels: {
+      type: Object,
+      default: () => ({}),
+    },
+    rules: {
+      type: Array,
+      default: () => [],
+    },
+
+
     labelCol: {
       type: [String, Number],
       default: 2,
@@ -30,11 +36,7 @@ export default {
   computed: {
     classBuilder() {
       var classes = [];
-      // if (this.model) {
-      //   if (this.model.hasErrors()) {
-      //     classes.push('was-validated');
-      //   }
-      // }
+
       return classes;
     },
   },
@@ -43,7 +45,7 @@ export default {
   },
   methods: {
     validate() {
-      return this.model.validate();
+      return Validator.validate(this.form, this.rules, this.labels).catch(errors => this.errors = errors)
     }
   }
 };
