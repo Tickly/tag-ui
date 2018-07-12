@@ -7,6 +7,7 @@ export default class Column {
     label,
     summary = false,
     width,
+    component,
   } = {}) {
 
     this.attribute = attribute;
@@ -18,7 +19,7 @@ export default class Column {
     this.vAlign = 'middle';
     this.hAlign = 'center';
 
-
+    this.component = component;
 
     // 所有该列的值
     this.column_values = [];
@@ -62,6 +63,7 @@ export default class Column {
       // }
     }, [this.renderDataCellContent(h, options, parent)])
   }
+  
   renderDataCellContent(h, {
     row,
     index

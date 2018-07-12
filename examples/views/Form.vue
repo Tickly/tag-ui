@@ -29,7 +29,7 @@
 <script>
 export default {
   data() {
-    var model = {
+    return {
       form: {
         name: null,
         delivery: false,
@@ -50,26 +50,16 @@ export default {
       },
       rules: [
         [
-          'required',
-          ['name', 'type', 'resouce', 'number', 'date']
+          'required', ['name', 'type', 'resouce', 'number', 'date']
         ],
         [
-          'number',
-          'number',
-          {
+          'number', 'number', {
             max: 100,
             min: 10
           }
         ],
         ['date', 'date']
-      ]
-    };
-
-    return {
-      model,
-      form: model.form,
-      labels: model.labels,
-      rules: model.rules,
+      ],
       data_checkbox: {
         0: '美食/餐厅线上活动',
         1: '地推活动',

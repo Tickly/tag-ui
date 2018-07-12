@@ -1,18 +1,57 @@
+import DataColumn from './columns/DataColumn'
+import SerialColumn from './columns/SerialColumn'
+import FormulaColumn from './columns/FormulaColumn'
+import TemplateColumn from './columns/TemplateColumn'
+
+
+const ColumnClasses = {
+  data: DataColumn,
+  serial: SerialColumn,
+  formula: FormulaColumn,
+  template: TemplateColumn,
+}
+
+
 const Component = {
   name: 'TagTableColumn',
   props: {
     type: {
       default: 'data',
       validator(value) {
-        return ['serial'].includes(value);
+        return ['serial', 'data', 'formula', 'template'].includes(value);
       }
-    }
+    },
+    attr: String,
+    label: String,
+    summary: Boolean,
+    format: [String, Array],
+    formula: Function,
+    width: String,
   },
   created() {
-    this.$parent.appendColumn();
+    let ColumnClass = ColumnClasses[this.type];
+
+    let label = this.label;
+    if (!label) {
+      label = this.$parent.labels[this.attr];
+    }
+
+
+    let column = new ColumnClass({
+      attribute: this.attr,
+      label,
+      summary: this.summary,
+      format: this.format,
+      formula: this.formula,
+      width: this.width,
+
+      component: this,
+    });
+
+    this.$parent.appendColumn(column);
   },
   render(h) {
-    return h('div', 9)
+    // return h('div', 9)
   },
 }
 

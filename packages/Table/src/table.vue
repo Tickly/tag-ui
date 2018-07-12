@@ -1,20 +1,6 @@
 <script>
 import GridView from './GridView'
 
-import DataColumn from './DataColumn'
-import SerialColumn from './SerialColumn'
-import FormulaColumn from './FormulaColumn'
-import TemplateColumn from './TemplateColumn'
-
-
-const ColumnClasses = {
-    data: DataColumn,
-    serial: SerialColumn,
-    formula: FormulaColumn,
-    template: TemplateColumn,
-}
-
-
 export default {
     name: 'TagTable',
     props: {
@@ -22,10 +8,6 @@ export default {
             type: Array,
             required: true,
             default: () => [],
-        },
-        columns: {
-            type: Array,
-            required: true,
         },
         labels: {
             type: Object,
@@ -43,56 +25,15 @@ export default {
             columns_array: [],
         }
     },
-    created() {
-        this.initColumns();
-    },
-    computed: {
-
-    },
+    created() { },
+    computed: {},
     methods: {
-        // 初始化列
-        initColumns() {
-            if (!this.columns) return;
-
-            let labels = this.labels
-
-            // if (this.model) {
-            //     let model = new this.model();
-            //     labels = model.labels;
-            // }
-
-
-            this.columns_array = this.columns
-                .map(column => {
-                    if ('string' === typeof column) {
-                        if ('#' === column) {
-                            column = {
-                                type: 'serial'
-                            }
-                        } else {
-                            column = DataColumn.parse(column)
-                        }
-                    }
-                    column.type = column.type || 'data';
-
-
-
-                    // 如果这个列没有设置label
-                    if (!column.label) {
-                        column.label = labels[column.attribute];
-                    }
-
-                    return new ColumnClasses[column.type](column);
-                })
-
-        },
-        appendColumn() {
-            this.columns_array.push(new ColumnClasses.data(DataColumn.parse('name')))
+        appendColumn(column) {
+            this.columns_array.push(column)
         }
     },
     render(h) {
         return h('div', [
-
             (new GridView({
                 showPageSummary: this.showPageSummary,
                 hover: this.hover,

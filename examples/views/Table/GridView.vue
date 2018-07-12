@@ -3,31 +3,52 @@
         <section>
             <h3>基础表格</h3>
             <div>
-                <tag-table :data="data" :columns="opt1.columns" bordered>
-                    <tag-table-column type="serial"/>
+                <tag-table :data="data" bordered>
+                    <tag-table-column type="serial" />
+                    <tag-table-column attr="name" />
+                    <tag-table-column attr="date" label="日期" />
+                    <tag-table-column attr="age" hAlign="center" width="100" />
+                    <tag-table-column attr="address" label="地址" />
                 </tag-table>
             </div>
         </section>
         <section>
             <h3>列的类型，统计，数据的格式化，</h3>
             <div>
-                <tag-table :data="data" :columns="options2.columns" showPageSummary striped bordered />
+                <tag-table :data="data" showPageSummary striped bordered>
+                    <tag-table-column type="serial" />
+                    <tag-table-column attr="name" />
+                    <tag-table-column attr="age" summary />
+                    <tag-table-column type="formula" label="相对于50岁(公式列)" :format="['percent', 2]" :formula="row=>{return row.age / 50}" />
+                    <tag-table-column attr="money" format="currency" label="货币格式" summary />
+                    <tag-table-column attr="date" format="date" label="日期格式" />
+                    <tag-table-column attr="date" format="time" label="时间格式" />
+                </tag-table>
             </div>
         </section>
         <section>
             <h3>带操作的列</h3>
             <div>
-                <tag-table :options="options3" :data="options3.data" :columns="options3.columns">
-                    <template slot="col-action" slot-scope="scope">
-                        <button class="btn btn-default" @click="click1(scope)">删除</button>
-                    </template>
+                <tag-table :data="data">
+                    <tag-table-column type="serial" />
+                    <tag-table-column attr="name" />
+                    <tag-table-column type="template" label="操作">
+                        <template slot-scope="scope">
+                            <button class="btn btn-default" @click="click1(scope)">删除</button>
+                        </template>
+                    </tag-table-column>
                 </tag-table>
             </div>
         </section>
         <section>
-            <h3>labels</h3>
+            <h3>自动显示labels</h3>
             <div>
-                <tag-table :data="data" :columns="opt4.columns" :labels="opt4.labels" />
+                <tag-table :data="data" :labels="labels">
+                    <tag-table-column type="serial" />
+                    <tag-table-column attr="name" />
+                    <tag-table-column attr="age" />
+                    <tag-table-column attr="address" />
+                </tag-table>
             </div>
         </section>
     </div>
@@ -39,132 +60,18 @@ export default {
     data() {
         return {
             data,
-            opt1: {
-                columns: [
-                    { type: 'serial' },
-                    'date:日期',
-                    'name',
-                    // 'age',
-                    {
-                        attribute: 'age',
-                        hAlign: 'center',
-                        width: 100,
-                    },
-                    {
-                        attribute: 'address',
-                        label: '地址',
-                    },
-                    'address',
-                    'address',
-                    'address',
-                    'address',
-                    'address',
-                    'address',
-                    'address',
-                    'address',
-                    'address',
-                ],
+            labels: {
+                name: '姓名',
+                age: '年龄',
             },
-            options2: {
-                data,
-                bordered: true,
-                striped: true,
-                showPageSummary: true,
-                columns: [
-                    { type: 'serial' },
-                    'name',
-                    {
-                        attribute: 'age',
-                        hAlign: 'center',
-                        summary: true,
-                    },
-                    {
-                        type: 'formula',
-                        label: '相对于50岁(公式列)',
-                        // format: 'percent',
-                        format: ['percent', 2],
-                        // 指定公式
-                        formula(row) {
-                            return row.age / 50
-                        },
-                    },
-                    // 'address',
-                    {
-                        attribute: 'money',
-                        label: '货币格式',
-                        width: 200,
-                        format: 'currency',
-                        summary: true,
-                    },
-                    {
-                        attribute: 'date',
-                        label: '日期格式',
-                        format: 'date',
-                    },
-                    {
-                        attribute: 'date',
-                        label: '时间格式',
-                        format: 'time',
-                    },
-                ]
-            },
-            options3: {
-                data,
-                bordered: true,
-                columns: [
-                    { type: 'serial' },
-                    'name',
-                    // 'age',
-                    {
-                        attribute: 'age',
-                        width: 50,
-                    },
-
-                    'address',
-                    {
-                        type: 'template',
-                        slot: 'col-action',
-                    },
-                    {
-                        label: '操作',
-                        type: 'template',
-                        template(h, { row }) {
-                            // return [
-                            //     h('button',123),
-                            //     h('button',123),
-                            // ]
-                            return <button class="btn btn-default" onClick={() => {
-                                console.log(this.click1({ row }));
-                            }}>del</button>
-                        },
-                    },
-                ]
-            },
-            opt4: {
-                columns: [
-                    '#',
-                    'name',
-                    'age',
-                    'address',
-                ],
-                labels: {
-                    name: '姓名',
-                    age: '年龄',
-                },
-            }
         }
     },
     methods: {
-        click1({ row }) {
+        click1(row) {
             alert(`${row.name}, ${row.age}`)
         }
     },
-    created() {
-        // console.log(this._renderProxy);
-    },
-    render(h) {
-
-    },
+    created() { },
 }
 </script>
 
