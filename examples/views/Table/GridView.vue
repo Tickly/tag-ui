@@ -59,7 +59,7 @@ import data from './data'
 export default {
     data() {
         return {
-            data,
+            data: [],
             labels: {
                 name: '姓名',
                 age: '年龄',
@@ -71,7 +71,14 @@ export default {
             alert(`${row.name}, ${row.age}`)
         }
     },
-    created() { },
+    created() {
+
+
+        setTimeout(() => {
+            this.data = data;
+        }, 1000);
+
+    },
 }
 </script>
 

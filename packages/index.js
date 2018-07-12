@@ -4,7 +4,7 @@ import Button from './Button'
 import ButtonGroup from './ButtonGroup'
 
 import Table from './Table'
-
+import TableColumn from './TableColumn'
 
 import Pagination from './Pagination'
 import DetailView from './DetailView'
@@ -38,6 +38,8 @@ const components = {
   DropdownItem,
 
   Table,
+  TableColumn,
+
   Pagination,
   DetailView,
   Tree,

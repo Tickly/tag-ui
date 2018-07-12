@@ -18,7 +18,6 @@ export default {
         bordered: Boolean,
         striped: Boolean,
         responsive: Boolean,
-        model: Function,
     },
     data() {
         return {
