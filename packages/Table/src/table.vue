@@ -29,7 +29,7 @@ export default {
     methods: {
         appendColumn(column) {
             this.columns_array.push(column)
-        }
+        },
     },
     render(h) {
         return h('div', [

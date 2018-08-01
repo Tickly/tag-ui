@@ -1,15 +1,4 @@
-import DataColumn from './columns/DataColumn'
-import SerialColumn from './columns/SerialColumn'
-import FormulaColumn from './columns/FormulaColumn'
-import TemplateColumn from './columns/TemplateColumn'
-
-
-const ColumnClasses = {
-  data: DataColumn,
-  serial: SerialColumn,
-  formula: FormulaColumn,
-  template: TemplateColumn,
-}
+import ColumnClasses from './columns'
 
 
 const Component = {
@@ -18,7 +7,7 @@ const Component = {
     type: {
       default: 'data',
       validator(value) {
-        return ['serial', 'data', 'formula', 'template'].includes(value);
+        return Object.keys(ColumnClasses).includes(value);
       }
     },
     attr: String,

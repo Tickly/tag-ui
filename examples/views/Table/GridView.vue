@@ -45,6 +45,7 @@
             <div>
                 <tag-table :data="data" :labels="labels">
                     <tag-table-column type="serial" />
+                    <tag-table-column type="checkbox" />
                     <tag-table-column attr="name" />
                     <tag-table-column attr="age" />
                     <tag-table-column attr="address" />

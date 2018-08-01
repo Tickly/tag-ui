@@ -15,7 +15,6 @@ export default class GridView {
     this.condensed = false;
     this.responsive = false;
 
-
     Object.assign(this, options);
 
 

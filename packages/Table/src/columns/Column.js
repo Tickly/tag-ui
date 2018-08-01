@@ -30,10 +30,9 @@ export default class Column {
     return h('th', {
       attrs: {},
       class: this.renderHeaderClass(),
-      domProps: {
-        innerHTML: this.renderHeaderCellContent()
-      }
-    })
+    }, [
+      this.renderHeaderCellContent(h, column)
+    ])
   }
   // 渲染列标题内容
   renderHeaderCellContent() {
@@ -55,15 +54,9 @@ export default class Column {
   renderDataCell(h, options, parent) {
     return h('td', {
       class: this.renderDataClass(),
-      // domProps: {
-      //   innerHTML: this.renderDataCellContent({
-      //     row,
-      //     index
-      //   })
-      // }
     }, [this.renderDataCellContent(h, options, parent)])
   }
-  
+
   renderDataCellContent(h, {
     row,
     index

@@ -1,5 +1,5 @@
 <template>
-    <button class="btn" :class="buttonClass">
+    <button class="btn" :class="buttonClass" :type="buttonType" @click="handleClick">
         <slot>Button</slot>
     </button>
 </template>
@@ -14,6 +14,7 @@ export default {
         size: String,
         active: Boolean,
         disabled: Boolean,
+        submit: Boolean,
     },
     computed: {
         buttonClass() {
@@ -29,7 +30,15 @@ export default {
                 obj['disabled'] = true;
             }
             return obj
-        }
+        },
+        buttonType() {
+            return this.submit ? 'submit' : 'button'
+        },
     },
+    methods: {
+        handleClick(e) {
+            this.$emit('click', e)
+        }
+    }
 }
 </script>
