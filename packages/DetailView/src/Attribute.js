@@ -1,13 +1,9 @@
 import UtilsType from '@/utils/type'
 import TagFormatter from 'tag-formatter'
 
-
-
-
-
 class Attribute {
   constructor(_options) {
-    let attribute, format, label, value, type, options;
+    let attribute, format, label, value, type, options, slots = {};
 
     if (UtilsType.isString(_options)) {
       [attribute, format, label] = _options.split(':');
@@ -19,13 +15,8 @@ class Attribute {
         value,
         type,
         options,
+        slots,
       } = _options);
-    }
-
-    if (attribute) {
-      if (!label) {
-        label = attribute;
-      }
     }
 
 
@@ -34,6 +25,7 @@ class Attribute {
     this.label = label;
     this.type = type || 'text';
     this.options = Object.assign({}, options);
+    this.slots = slots;
   }
 
 
@@ -45,63 +37,43 @@ class Attribute {
   }
 
 
-  getLabel() {
-    return this.label
+  getLabel(labels) {
+    return this.label || labels[this.attribute] || this.attribute
   }
 
 
-  render(h, mode, model) {
+  render(h, mode, model, labels, errors) {
     return h('tr', {}, [
-      h('td', {}, this.getLabel()),
-      h('td', {}, this.renderContent(h, mode, model)),
+      h('td', {}, this.getLabel(labels)),
+      h('td', {}, this.renderContent(h, mode, model, errors)),
     ])
   }
 
-  renderContent(h, mode, model) {
+  renderContent(h, mode, model, errors) {
     var nodes = [];
     if (mode === 'view')
       nodes.push(h('div', this.getDisplayValue(model)));
 
     if (mode === 'edit') {
-      nodes.push(h('div', [this.renderContentEdit(h, model)]))
+      nodes.push(h('div', [
+        this.slots.edit,
+        this.renderError(h, errors[this.attribute])
+      ]))
     }
 
     return nodes
   }
 
-  renderContentEdit(h, model) {
-    if (Attribute.InputList.contains(this.type)) {
-      return this.renderInput(h, model);
+  renderError(h, errors) {
+    if (errors && errors.length) {
+      return h('div', {
+        class: 'attribute-error'
+      }, errors.map(err => h('p', {
+        class: 'text-danger'
+      }, err)))
     }
-
-    // return h(this.type, this.options);
-    return h(this.type);
   }
-
-
-  renderInput(h, model) {
-    return h('input', {
-      attrs: {
-        type: this.type,
-      },
-      domProps: {
-        value: this.getValue(model)
-      },
-      style: {
-        width: '100%'
-      }
-    })
-  }
-
 
 }
-
-
-
-Attribute.InputList = [
-  'text',
-  'number',
-  'date',
-]
 
 export default Attribute

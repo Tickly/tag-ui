@@ -6,8 +6,10 @@ import ButtonGroup from './ButtonGroup'
 import Table from './Table'
 import TableColumn from './TableColumn'
 
-import Pagination from './Pagination'
 import DetailView from './DetailView'
+import DetailViewItem from './DetailViewItem'
+
+import Pagination from './Pagination'
 import Tree from './Tree'
 import Autoflow from './Autoflow'
 
@@ -40,8 +42,10 @@ const components = {
   Table,
   TableColumn,
 
-  Pagination,
   DetailView,
+  DetailViewItem,
+  
+  Pagination,
   Tree,
   Autoflow,
 
