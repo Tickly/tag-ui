@@ -24,11 +24,12 @@ export default {
 
         title: String,
         readonly: Boolean,
+        type: String,
     },
     computed: {},
     created() { },
     render(h) {
-        return <tag-panel title={this.title} minable={false}>
+        return <tag-panel class="detail-view" title={this.title} minable={false} type={this.type}>
             <template slot="tools">
                 {
                     this.mode === 'view' ?
@@ -46,7 +47,7 @@ export default {
                         ]
                 }
             </template>
-            <table class="detail-view table table-bordered">
+            <table class="table table-bordered">
                 <colgroup>
                     <col width="20%" />
                     <col />
@@ -90,6 +91,9 @@ export default {
 </script>
 <style lang="scss">
 .detail-view {
+  .table {
+    margin-bottom: 0;
+  }
   .attribute-error {
     padding-top: 1em;
   }

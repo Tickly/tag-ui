@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-default">
+    <nav class="app-header navbar navbar-default">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -10,7 +10,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Brand</a>
+          <a class="navbar-brand" href="#">Tag-ui</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -85,19 +85,16 @@
       </div>
       <!-- /.container-fluid -->
     </nav>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-3">
-          <ul class="list-group">
-            <li v-for="(component,key) in examples" :key="key" class="list-group-item">
-              <a :href="'/'+key">{{key}}</a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-sm-9">
-          <router-view></router-view>
-        </div>
+    <div class="app-body">
+      <div class="sidebar">
+        <ul class="list-group">
+          <li v-for="(component,key) in examples" :key="key" class="list-group-item">
+            <a :href="'/'+key">{{key}}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="main">
+        <router-view></router-view>
       </div>
     </div>
   </div>
@@ -114,3 +111,32 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+html,
+body {
+  height: 100%;
+}
+
+#app {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+.app-body {
+  flex-grow: 1;
+  overflow: hidden;
+  display: flex;
+}
+.sidebar {
+  width: 240px;
+  overflow: scroll;
+}
+.main {
+  flex-grow: 1;
+  padding: 15px;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+</style>

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <tag-detail-view :form="form" :rules="rules" :labels="labels" title="你开心就好" @submit="handleSubmit">
+        <tag-detail-view type="info" :form="form" :rules="rules" :labels="labels" title="你开心就好" @submit="handleSubmit">
             <tag-detail-view-item attr="name">
                 <template slot="edit">
                     <input v-model="form.name" type="text" class="form-control" />
