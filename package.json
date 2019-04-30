@@ -21,6 +21,7 @@
   "dependencies": {
     "accounting": "^0.4.1",
     "bootstrap": "^3.3.7",
+    "tag-validators": "^0.2.0",
     "tag-formatter": "^1.0.1"
   },
   "devDependencies": {
@@ -62,7 +63,6 @@
     "semver": "^5.5.0",
     "shelljs": "^0.7.6",
     "style-loader": "^0.21.0",
-    "tag-validators": "^0.2.0",
     "url-loader": "^1.0.1",
     "vue": "^2.5.16",
     "vue-loader": "^15.2.4",
