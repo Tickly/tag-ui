@@ -17,7 +17,4 @@ export default class FormulaColumn extends DataColumn {
   }) {
     return this.formula(row);
   }
-
-
-
 }

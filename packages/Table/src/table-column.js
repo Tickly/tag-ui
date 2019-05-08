@@ -6,7 +6,7 @@ const Component = {
   props: {
     type: {
       default: 'data',
-      validator(value) {
+      validator (value) {
         return Object.keys(ColumnClasses).includes(value);
       }
     },
@@ -16,8 +16,9 @@ const Component = {
     format: [String, Array],
     formula: Function,
     width: String,
+    enum: Object,
   },
-  created() {
+  created () {
     let ColumnClass = ColumnClasses[this.type];
 
     let label = this.label;
@@ -33,13 +34,14 @@ const Component = {
       format: this.format,
       formula: this.formula,
       width: this.width,
+      enum: this.enum,
 
       component: this,
     });
 
     this.$parent.appendColumn(column);
   },
-  render(h) {
+  render (h) {
     // return h('div', 9)
   },
 }

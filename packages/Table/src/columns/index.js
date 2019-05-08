@@ -3,7 +3,7 @@ import SerialColumn from './SerialColumn'
 import FormulaColumn from './FormulaColumn'
 import TemplateColumn from './TemplateColumn'
 import CheckboxColumn from './CheckboxColumn'
-
+import EnumColumn from './EnumColumn'
 
 const ColumnClasses = {
   data: DataColumn,
@@ -11,7 +11,7 @@ const ColumnClasses = {
   formula: FormulaColumn,
   template: TemplateColumn,
   checkbox: CheckboxColumn,
+  enum: EnumColumn,
 }
-
 
 export default ColumnClasses
