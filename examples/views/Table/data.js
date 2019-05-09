@@ -1,11 +1,17 @@
-class User {
-  constructor(data) {
-    for (const key in data) {
-      if (data.hasOwnProperty(key)) {
-        this[key] = data[key]
-      }
-    }
+import { Model } from 'tag-validators'
+
+class User extends Model {
+
+  get attributes () {
+    return [
+      'name',
+      'date',
+      'address',
+      'age',
+      'money',
+    ]
   }
+
   get isAdult () {
     return this.age >= 18
   }
@@ -15,7 +21,7 @@ export default [
   new User({
     date: '2016-05-02 12:08:34',
     name: '令狐冲',
-    address: '上海市普陀区金沙江路 1518 弄',
+    // address: '上海市普陀区金沙江路 1518 弄',
     age: 25,
     money: 1000000,
   }),
