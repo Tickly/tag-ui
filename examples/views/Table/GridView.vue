@@ -13,13 +13,26 @@
       </div>
     </section>
     <section>
+      <h3>自动显示labels</h3>
+      <div>
+        <tag-table :data="data" :labels="labels">
+          <tag-table-column type="serial" />
+          <tag-table-column type="checkbox" />
+          <tag-table-column attr="name" />
+          <tag-table-column attr="age" />
+          <tag-table-column attr="address" />
+        </tag-table>
+      </div>
+    </section>
+    <section>
       <h3>列的类型，统计，数据的格式化，</h3>
       <div>
-        <tag-table :data="data" showPageSummary striped bordered>
+        <tag-table :data="data" :labels="labels" showPageSummary striped bordered>
           <tag-table-column type="serial" />
           <tag-table-column attr="name" />
           <tag-table-column attr="age" summary />
-          <tag-table-column attr="age" type="enum" :enum="testEnum" />
+          <tag-table-column attr="isAdult" />
+          <tag-table-column attr="isAdult" type="enum" :enum="testEnum" />
           <tag-table-column type="formula" label="相对于50岁(公式列)" :format="['percent', 2]" :formula="row=>{return row.age / 50}" />
           <tag-table-column attr="money" format="currency" label="货币格式" summary />
           <tag-table-column attr="date" format="date" label="日期格式" />
@@ -41,18 +54,6 @@
         </tag-table>
       </div>
     </section>
-    <section>
-      <h3>自动显示labels</h3>
-      <div>
-        <tag-table :data="data" :labels="labels">
-          <tag-table-column type="serial" />
-          <tag-table-column type="checkbox" />
-          <tag-table-column attr="name" />
-          <tag-table-column attr="age" />
-          <tag-table-column attr="address" />
-        </tag-table>
-      </div>
-    </section>
   </div>
 </template>
 <script>
@@ -65,9 +66,11 @@ export default {
       labels: {
         name: '姓名',
         age: '年龄',
+        isAdult: '是否成年',
       },
       testEnum: {
-        25: '二十五',
+        0: '未成年',
+        1: '成年'
       }
     }
   },

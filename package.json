@@ -20,8 +20,8 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "tag-validators": "^0.2.0",
-    "tag-formatter": "^1.0.1"
+    "tag-formatter": "^1.0.5",
+    "tag-validators": "^0.2.0"
   },
   "devDependencies": {
     "accounting": "^0.4.1",

@@ -26,21 +26,21 @@ export default class Column {
   }
 
   // 渲染一个列标题th
-  renderHeaderCell(h, column) {
+  renderHeaderCell (h, column) {
     return h('th', {
       attrs: {},
       class: this.renderHeaderClass(),
     }, [
-      this.renderHeaderCellContent(h, column)
-    ])
+        this.renderHeaderCellContent(h, column)
+      ])
   }
   // 渲染列标题内容
-  renderHeaderCellContent() {
+  renderHeaderCellContent () {
     return this.label || this.attribute;
   }
 
 
-  renderHeaderClass() {
+  renderHeaderClass () {
     var classes = [];
 
     classes.push('text-' + this.hAlign);
@@ -51,13 +51,13 @@ export default class Column {
 
 
 
-  renderDataCell(h, options, parent) {
+  renderDataCell (h, options, parent) {
     return h('td', {
       class: this.renderDataClass(),
     }, [this.renderDataCellContent(h, options, parent)])
   }
 
-  renderDataCellContent(h, {
+  renderDataCellContent (h, {
     row,
     index
   }) {
@@ -68,14 +68,14 @@ export default class Column {
   }
 
   // 获取单元格的value，不同类型的列可重写该方法，比如公式列
-  getDataCellValue({
+  getDataCellValue ({
     row
   }) {
     if (this.attribute)
       return row[this.attribute]
     return null;
   }
-  renderDataClass() {
+  renderDataClass () {
     var classes = [];
     classes.push('text-' + this.hAlign);
     classes.push('vAlign-' + this.vAlign);
@@ -86,22 +86,22 @@ export default class Column {
 
 
 
-  renderFootCell(h, data) {
+  renderFootCell (h, data) {
     return h('td', {
       class: this.renderDataClass(),
     }, [this.renderFootCellContent(h, data)])
   }
-  renderFootCellContent(h, data) {
+  renderFootCellContent (h, data) {
     if (!this.summary) return;
     return TagFormatter.format(this.getFootCellValue(data), this.format);
   }
-  renderFootClass() {
+  renderFootClass () {
     var classes = [];
     classes.push('text-' + this.hAlign);
     classes.push('vAlign-' + this.vAlign);
     return classes;
   }
-  getFootCellValue(data) {
+  getFootCellValue (data) {
     return data.map(row => {
       return this.getDataCellValue({
         row
@@ -113,7 +113,7 @@ export default class Column {
 
 
 
-  setPageRows(data) {
+  setPageRows (data) {
     this.column_values = data.map(row => {
       this
     });

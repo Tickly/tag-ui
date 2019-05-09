@@ -1,9 +1,11 @@
-export default [{
+export default [
+  {
     date: '2016-05-02 12:08:34',
     name: '令狐冲',
     address: '上海市普陀区金沙江路 1518 弄',
     age: 25,
     money: 1000000,
+    isAdult: false,
   },
   {
     date: '2016-05-04 09:09:09',
@@ -11,6 +13,7 @@ export default [{
     address: '上海市普陀区金沙江路 1517 弄',
     age: 31,
     money: 842934,
+    isAdult: true,
   },
   {
     date: '2016-05-01 00:00:00',
@@ -18,6 +21,7 @@ export default [{
     address: '上海市普陀区金沙江路 1519 弄',
     age: 28,
     money: 492883,
+    isAdult: true,
   },
   {
     date: '2016-05-03 10:30:00',
@@ -25,5 +29,6 @@ export default [{
     address: '上海市普陀区金沙江路 1516 弄',
     age: 27,
     money: 10000001,
+    isAdult: false,
   }
 ]

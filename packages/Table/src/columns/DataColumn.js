@@ -16,12 +16,10 @@ export default class DataColumn extends Column {
 
 
 
-  renderDataCellContent(h, {
-    row
-  }) {
-    return TagFormatter.format(this.getDataCellValue({
-      row
-    }), this.format)
+  renderDataCellContent (h, { row }) {
+    return TagFormatter
+      .format(this.getDataCellValue({ row }), this.format)
+      .toString()
   }
 
 }
