@@ -80,8 +80,6 @@ export default {
     }
   },
   created () {
-
-
     setTimeout(() => {
       this.data = data;
     }, 1000);
