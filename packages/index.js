@@ -1,4 +1,4 @@
-import Panel from './Panel'
+import Panel from './Panel/index'
 
 import Button from './Button'
 import ButtonGroup from './ButtonGroup'
@@ -28,7 +28,6 @@ import Menu from './Menu'
 import MenuItem from './MenuItem'
 
 import Editable from './Editable'
-
 
 const components = {
   Panel,
@@ -62,8 +61,5 @@ const components = {
 
   Editable,
 }
-
-
-
 
 export default components

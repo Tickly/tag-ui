@@ -1,3 +1,6 @@
+// 引入样式
+import './libs/bootstrap'
+
 // 扩展一些方法
 import './extends'
 

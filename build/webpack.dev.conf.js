@@ -34,9 +34,10 @@ var webpackConfig = merge(baseWebpackConfig, {
   ],
 
   devServer: {
-    host: '0.0.0.0',
+    // host: '0.0.0.0',
     port: 8000,
-    hotOnly: true,
+    hot: true,
+    // hotOnly: true,
     historyApiFallback: true,
     contentBase: path.join(__dirname, '..')
   }
