@@ -1,20 +1,21 @@
 {
   "presets": [
-    "es2015",
-    ["env", {
-      "modules": false
-    }],
-    "stage-2"
+    "@babel/preset-env"
   ],
   "plugins": [
-    "transform-runtime",
+    "@babel/plugin-transform-runtime",
     "transform-vue-jsx"
   ],
   "comments": false,
   "env": {
     "test": {
-      "presets": ["env", "stage-2"],
-      "plugins": ["istanbul"]
+      "presets": [
+        "env",
+        "stage-2"
+      ],
+      "plugins": [
+        "istanbul"
+      ]
     }
   }
 }
