@@ -16,7 +16,7 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "webpack-dev-server --config ./build/webpack.dev.conf.js",
-    "build": "webpack --config ./build/webpack.prod.conf.js",
+    "build": "webpack --config ./build/webpack.prod.conf.js --display-modules --sort-modules-by size",
     "watch": "webpack --config ./build/webpack.prod.conf.js -w"
   },
   "dependencies": {

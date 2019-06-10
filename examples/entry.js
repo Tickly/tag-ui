@@ -1,3 +1,6 @@
+// 引入样式
+import './libs/bootstrap'
+
 import Vue from 'vue'
 import router from './router'
 
