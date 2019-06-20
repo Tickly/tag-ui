@@ -1,30 +1,30 @@
 <template>
-  <tag-form labelCol="2" ref="myForm" :form="form" :rules="rules" :labels="labels" @submit.prevent.native="handleSubmit">
-    <tag-form-item attr="name">
+  <tg-form labelCol="2" ref="myForm" :form="form" :rules="rules" :labels="labels" @submit.prevent.native="handleSubmit">
+    <tg-form-item attr="name">
       <input v-model="form.name" class="form-control">
-    </tag-form-item>
-    <tag-form-item attr="number">
+    </tg-form-item>
+    <tg-form-item attr="number">
       <input type="number" v-model.number="form.number" class="form-control">
-    </tag-form-item>
-    <tag-form-item attr="date">
+    </tg-form-item>
+    <tg-form-item attr="date">
       <input type="date" v-model="form.date" class="form-control">
-    </tag-form-item>
-    <tag-form-item attr="delivery">
+    </tg-form-item>
+    <tg-form-item attr="delivery">
       <tag-checkbox label="是" v-model="form.delivery" />
-    </tag-form-item>
-    <tag-form-item attr="type">
+    </tg-form-item>
+    <tg-form-item attr="type">
       <tag-checkbox-group v-model="form.type" :data="data_checkbox" />
-    </tag-form-item>
-    <tag-form-item attr="resouce">
+    </tg-form-item>
+    <tg-form-item attr="resouce">
       <tag-radio v-model="form.resouce" :data="data_radio" />
-    </tag-form-item>
-    <tag-form-item attr="desc">
+    </tg-form-item>
+    <tg-form-item attr="desc">
       <textarea class="form-control" />
-    </tag-form-item>
-    <tag-form-item>
+    </tg-form-item>
+    <tg-form-item>
       <tag-button>验证</tag-button>
-    </tag-form-item>
-  </tag-form>
+    </tg-form-item>
+  </tg-form>
 </template>
 <script>
 export default {

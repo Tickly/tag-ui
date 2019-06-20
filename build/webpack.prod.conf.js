@@ -39,11 +39,11 @@ var webpackConfig = merge(baseWebpackConfig, {
       commonjs2: 'accounting',
       amd: 'accounting',
     },
-    'tag-formatter': {
-      commonjs2: 'tag-formatter'
+    'tg-formatter': {
+      commonjs2: 'tg-formatter'
     },
-    'tag-validators': {
-      commonjs2: 'tag-validators'
+    'tg-validators': {
+      commonjs2: 'tg-validators'
     },
   },
   plugins: [

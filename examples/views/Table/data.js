@@ -1,4 +1,4 @@
-import { Model } from 'tag-validators'
+import { Model } from 'tg-validators'
 
 class User extends Model {
 

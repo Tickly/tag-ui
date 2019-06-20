@@ -1,5 +1,5 @@
 import UtilsType from '@/utils/type'
-import TagFormatter from 'tag-formatter'
+import TagFormatter from 'tg-formatter'
 
 class Attribute {
   constructor(_options) {

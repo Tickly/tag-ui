@@ -4,7 +4,7 @@
   </form>
 </template>
 <script>
-import { Validator } from 'tag-validators'
+import { Validator } from 'tg-validators'
 
 export default {
   name: 'TagForm',

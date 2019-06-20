@@ -1,4 +1,4 @@
-import TagFormatter from 'tag-formatter'
+import TagFormatter from 'tg-formatter'
 
 export default class Column {
 

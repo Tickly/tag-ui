@@ -1,6 +1,6 @@
 <script>
 import Attribute from './Attribute'
-import { Validator } from 'tag-validators'
+import { Validator } from 'tg-validators'
 
 export default {
     name: 'TagDetailView',

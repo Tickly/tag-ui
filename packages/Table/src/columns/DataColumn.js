@@ -1,5 +1,5 @@
 import Column from './Column'
-import TagFormatter from 'tag-formatter'
+import TagFormatter from 'tg-formatter'
 import Type from '@/utils/type'
 
 export default class DataColumn extends Column {
